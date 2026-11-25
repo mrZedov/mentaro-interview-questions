@@ -13,8 +13,6 @@ Export the provider from its declaring module and import that module in the cons
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 2. Why are TypeScript interfaces not usable as injection tokens at runtime?
 
 <details>
@@ -24,8 +22,6 @@ Interfaces are erased. Use a class, symbol or string as a runtime token, registe
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 3. Where should domain rules live: in a controller or a provider?
 
 <details>
@@ -34,8 +30,6 @@ Interfaces are erased. Use a class, symbol or string as a runtime token, registe
 Let controllers translate transport requests into calls and responses. Put reusable business rules in a service or domain component so other entry points can use them without HTTP coupling.
 
 </details>
-
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
 
 ### 4. How does a guard differ from a pipe?
 
@@ -48,8 +42,6 @@ A guard decides whether execution may continue based on context, typically for a
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 5. When would you use an exception filter instead of an interceptor?
 
 <details>
@@ -58,8 +50,6 @@ A guard decides whether execution may continue based on context, typically for a
 A filter translates selected uncaught exceptions into transport responses. An interceptor surrounds handler execution and can time calls or transform successful results as well as handle errors.
 
 </details>
-
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
 
 ## Applied
 
@@ -72,8 +62,6 @@ Guards run before pipes. If an access decision depends on an input, validate it 
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 7. When does request scope affect more than one provider?
 
 <details>
@@ -82,8 +70,6 @@ Guards run before pipes. If an access decision depends on an input, validate it 
 A consumer that depends on a request-scoped provider becomes request-scoped through the dependency chain. Prefer explicit context parameters for simple use cases when per-request construction adds cost.
 
 </details>
-
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
 
 ### 8. What is the benefit of a dynamic module?
 
@@ -94,8 +80,6 @@ It lets a module produce providers and exports from configuration supplied at im
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 9. What problem does useExisting solve compared with useClass?
 
 <details>
@@ -105,8 +89,6 @@ UseExisting aliases a token to an already registered provider. UseClass tells th
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 10. Why might a global exception filter not affect an error caught inside a controller?
 
 <details>
@@ -115,8 +97,6 @@ UseExisting aliases a token to an already registered provider. UseClass tells th
 Filters handle exceptions that reach Nest exception handling. If the controller catches the exception and returns normally, there is no uncaught exception for the filter to translate.
 
 </details>
-
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
 
 ## Advanced scenarios
 
@@ -129,8 +109,6 @@ Check the reported parameter index and token, then follow the declaring module's
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 12. What should you try before resolving a service cycle with forwardRef?
 
 <details>
@@ -139,8 +117,6 @@ Check the reported parameter index and token, then follow the declaring module's
 Look for a shared responsibility that belongs in a third provider or an orchestration layer. Forward references can unblock unavoidable cycles but make initialization and testing harder to reason about.
 
 </details>
-
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
 
 ### 13. How do you test an HTTP endpoint while replacing a downstream service?
 
@@ -151,8 +127,6 @@ Build a testing module and override the same token used in production. Initializ
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 14. Why is a request-specific property on a default-scoped provider unsafe?
 
 <details>
@@ -161,8 +135,6 @@ Build a testing module and override the same token used in production. Initializ
 Default providers are normally shared across requests. Concurrent requests can overwrite the property; pass the value as an argument or use a properly scoped context.
 
 </details>
-
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
 
 ### 15. How do you ensure a server shutdown closes consumers and database connections?
 
@@ -173,8 +145,6 @@ Register the appropriate lifecycle hooks and enable signal-driven shutdown hooks
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ### 16. Why can a validation pipe not guarantee that an email address is unique?
 
 <details>
@@ -184,11 +154,11 @@ Validation can check input shape, but a separate uniqueness lookup races with co
 
 </details>
 
-[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)
-
 ## Official references
 
 - [NestJS: Modules](https://docs.nestjs.com/modules)
 - [NestJS: Request lifecycle](https://docs.nestjs.com/faq/request-lifecycle)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the NestJS practice demo](https://www.mentaro.app/demo?topic=nestjs&utm_source=github)

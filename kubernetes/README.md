@@ -15,8 +15,6 @@ Containers in one Pod are placed together and share a network namespace. Use thi
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 2. What does a Deployment add on top of a ReplicaSet?
 
 <details>
@@ -27,8 +25,6 @@ It manages ReplicaSets for successive versions of a Pod template, coordinates re
 **Explanation:** A Deployment coordinates the transition between old and new ReplicaSets when the Pod template changes. Scaling a ReplicaSet alone changes the number of matching replicas but does not manage a controlled version rollout.
 
 </details>
-
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
 
 ### 3. What problem does a Service solve when Pods restart?
 
@@ -41,8 +37,6 @@ It gives clients a stable name and endpoint abstraction while selected Pods come
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 4. How do a resource request and limit differ?
 
 <details>
@@ -54,8 +48,6 @@ Requests inform scheduling and resource allocation. Limits constrain use at runt
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 5. When would you choose a StatefulSet over a Deployment?
 
 <details>
@@ -66,8 +58,6 @@ Use a StatefulSet when replicas need stable identities or per-replica persistent
 **Explanation:** StatefulSet is a fit when a replica needs stable identity or its own persistent volume across replacement. It does not create database replication or quorum automatically; the application still has to manage membership and data.
 
 </details>
-
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
 
 ## Applied
 
@@ -82,8 +72,6 @@ Readiness affects eligibility for Service traffic. Repeated liveness failures ca
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 7. What does a startup probe change for a slow-starting workload?
 
 <details>
@@ -94,8 +82,6 @@ Readiness and liveness probes do not run until the startup probe succeeds. This 
 **Explanation:** Until the startup probe succeeds, Kubernetes does not run readiness or liveness probes for that container. Budget enough attempts for legitimate startup, but still ensure a permanently stalled process eventually fails.
 
 </details>
-
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
 
 ### 8. Why might an autoscaler add Pods that cannot start?
 
@@ -108,8 +94,6 @@ Scaling creates demand for more replicas but does not guarantee capacity. Inspec
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 9. How can a ConfigMap update reach a running application?
 
 <details>
@@ -120,8 +104,6 @@ Mounted files generally update eventually, but the application must reload them 
 **Explanation:** Environment variables are set at process startup. A standard mounted ConfigMap volume can update after a delay, but the application must reread it; a subPath mount does not receive those updates.
 
 </details>
-
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
 
 ### 10. What can a PodDisruptionBudget protect against?
 
@@ -134,8 +116,6 @@ It limits supported voluntary evictions such as a node drain. It does not preven
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 11. How can topology spread constraints improve placement even when a Deployment has several replicas?
 
 <details>
@@ -146,8 +126,6 @@ Replica count alone does not guarantee distribution. Use constraints over domain
 **Explanation:** Pick a topology key that reflects your failure domain, then verify nodes actually have that label and sufficient capacity. Strict skew can leave Pods pending; a soft preference can leave replicas clustered under pressure.
 
 </details>
-
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
 
 ## Advanced scenarios
 
@@ -162,8 +140,6 @@ Read Pod conditions and events. Unschedulable usually means capacity or placemen
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 13. How do you diagnose a container in CrashLoopBackOff?
 
 <details>
@@ -174,8 +150,6 @@ Check the last termination reason and exit code, then read logs from the previou
 **Explanation:** Inspect the last termination reason and previous container logs. An OOM kill, failing liveness probe and immediate process exit require different fixes even though all can present as restart backoff.
 
 </details>
-
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
 
 ### 14. Why can a Service have no endpoints even if Pods are running?
 
@@ -188,8 +162,6 @@ The selector may not match the Pods or none may be ready. Check labels, namespac
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 15. How do maxSurge and maxUnavailable constrain a rolling update?
 
 <details>
@@ -200,8 +172,6 @@ Surge allows temporary extra replicas; unavailable limits how far availability c
 **Explanation:** With four desired replicas, maxSurge 1 and maxUnavailable 0 let the controller bring a replacement up before reducing available capacity. If the new Pod cannot become ready, keeping availability may cause the rollout to stall.
 
 </details>
-
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
 
 ### 16. What do you plan for when terminating a Pod during a rollout?
 
@@ -214,8 +184,6 @@ Allow for traffic routing to converge, stop accepting new work and drain in-flig
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ### 17. Why can a pod be scheduled successfully but later be CPU-throttled?
 
 <details>
@@ -227,11 +195,11 @@ Scheduling considers requested CPU against available capacity. A CPU limit caps 
 
 </details>
 
-[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)
-
 ## Official references
 
 - [Kubernetes: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - [Kubernetes: Probes](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Kubernetes practice demo](https://www.mentaro.app/demo?topic=kubernetes&utm_source=github)

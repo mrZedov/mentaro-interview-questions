@@ -15,8 +15,6 @@ An image contains the packaged filesystem layers and runtime defaults. A contain
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 2. Do Linux containers normally boot their own kernel?
 
 <details>
@@ -27,8 +25,6 @@ No. They isolate processes through facilities provided by the host kernel, such 
 **Explanation:** A container can have a private process namespace even though its system calls execute on the shared host kernel. On a desktop VM, the relevant kernel is the VM’s Linux kernel, not the host operating system kernel.
 
 </details>
-
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
 
 ### 3. How does publishing a port differ from EXPOSE?
 
@@ -47,8 +43,6 @@ docker run --rm -p 127.0.0.1:8080:80 example-web
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 4. What persists when a container is removed and recreated?
 
 <details>
@@ -60,8 +54,6 @@ Mounted volumes or bind mounts can persist independently. Data written only to t
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 5. How does an image digest differ from a tag?
 
 <details>
@@ -72,8 +64,6 @@ A digest identifies specific content, while a tag is a movable name. Pin a diges
 **Explanation:** A tag can be repointed at new bytes without changing the deployment file. A digest pin makes updates explicit; maintain a process to review and replace the pin rather than leaving a known-outdated dependency indefinitely.
 
 </details>
-
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
 
 ## Applied
 
@@ -88,8 +78,6 @@ The dependency install layer can be reused while manifests stay the same. Copyin
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 7. How can a multi-stage build reduce image size?
 
 <details>
@@ -100,8 +88,6 @@ Compile in a stage containing the toolchain, then copy only runtime artifacts in
 **Explanation:** Compile with a toolchain in one stage and copy the runnable artifact into a fresh stage. Confirm its architecture, dynamic libraries and runtime files match the final stage; a small image that cannot start is not a useful optimization.
 
 </details>
-
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
 
 ### 8. How do ENTRYPOINT and CMD work together in exec form?
 
@@ -123,8 +109,6 @@ For an image named cli, docker run cli --version runs node cli.js --version inst
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 9. When would you use a bind mount instead of a named volume?
 
 <details>
@@ -135,8 +119,6 @@ Use a bind mount when the container needs a specific host path, such as checked-
 **Explanation:** A bind mount lets a developer edit files on the host and see them immediately in the container. A named volume fits data that the deployment should manage independently of the developer’s working-directory layout.
 
 </details>
-
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
 
 ### 10. How should a build receive a short-lived package registry credential?
 
@@ -149,8 +131,6 @@ Use a build secret mount for the single step that needs it. Avoid putting the va
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 11. What does a .dockerignore file protect beyond build performance?
 
 <details>
@@ -161,8 +141,6 @@ It excludes matching files from the build context, reducing what is sent to the 
 **Explanation:** Exclude directories such as local dependencies or build outputs that should not enter the build. Check patterns against the actual build context; a file ignored in Git is not automatically excluded from the Docker context.
 
 </details>
-
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
 
 ## Advanced scenarios
 
@@ -177,8 +155,6 @@ Confirm the mapping uses the actual container port. Check that the process liste
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 13. Why can two containers not reach each other through localhost?
 
 <details>
@@ -189,8 +165,6 @@ Each container generally has its own loopback interface. Put them on the intende
 **Explanation:** Peer names resolve on an appropriate shared network, but localhost still names the caller itself. Use the target’s internal service port for container-to-container traffic rather than routing through an unnecessarily published host port.
 
 </details>
-
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
 
 ### 14. Why does a container fail to shut down gracefully?
 
@@ -203,8 +177,6 @@ Check what runs as PID 1 and whether it receives and forwards the stop signal. U
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 15. Why does deleting build files in a later layer not reclaim their image size?
 
 <details>
@@ -215,8 +187,6 @@ Earlier layers still contain the bytes. Avoid copying unnecessary files, remove 
 **Explanation:** Layer history is additive: a later deletion hides an earlier file without erasing the bytes in the earlier layer. Keep temporary files within one build step or omit the build stage from the runtime image.
 
 </details>
-
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
 
 ### 16. An image works on a laptop but fails with an exec format error on a server. Where do you look?
 
@@ -229,8 +199,6 @@ Check the image platform and the architecture of copied executables. Build and t
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ### 17. Why can mounting a directory make files from the image seem to disappear?
 
 <details>
@@ -242,11 +210,11 @@ The mount covers the image contents at that path for the lifetime of the contain
 
 </details>
 
-[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)
-
 ## Official references
 
 - [Docker: Build cache](https://docs.docker.com/build/cache/)
 - [Docker: Networking](https://docs.docker.com/engine/network/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Docker practice demo](https://www.mentaro.app/demo?topic=docker&utm_source=github)

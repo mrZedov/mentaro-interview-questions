@@ -15,8 +15,6 @@ React Native uses native platform views and APIs. Defaults, font metrics and pla
 
 </details>
 
-[Try the React Native practice demo](https://www.mentaro.app/demo?topic=react-native&utm_source=github)
-
 ### 2. When should a React Native component have platform-specific implementations?
 
 <details>
@@ -25,8 +23,6 @@ React Native uses native platform views and APIs. Defaults, font metrics and pla
 Use them when behavior depends on a native API or platform convention. Keep shared business logic and accessible semantics consistent so the platform variants do not drift.
 
 </details>
-
-[Try the React Native practice demo](https://www.mentaro.app/demo?topic=react-native&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Use FlatList for large lists where rendering a window of items limits memory and
 
 </details>
 
-[Try the React Native practice demo](https://www.mentaro.app/demo?topic=react-native&utm_source=github)
-
 ### 4. How do you keep FlatList items from showing stale selection state?
 
 <details>
@@ -49,8 +43,6 @@ Use FlatList for large lists where rendering a window of items limits memory and
 Keep selection in an appropriate state owner, update it immutably, and ensure the list receives the changed dependency. Use stable item keys and verify updates on recycled or remounted rows.
 
 </details>
-
-[Try the React Native practice demo](https://www.mentaro.app/demo?topic=react-native&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Compare frame measurements and profiles for both threads in a release build. Hea
 
 </details>
 
-[Try the React Native practice demo](https://www.mentaro.app/demo?topic=react-native&utm_source=github)
-
 ### 6. How would you diagnose a release-only startup crash in React Native?
 
 <details>
@@ -74,10 +64,10 @@ Collect symbolicated JavaScript and native crash data from the same build. Check
 
 </details>
 
-[Try the React Native practice demo](https://www.mentaro.app/demo?topic=react-native&utm_source=github)
-
 ## Official references
 
 - [React Native documentation](https://reactnative.dev/docs/getting-started)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the React Native practice demo](https://www.mentaro.app/demo?topic=react-native&utm_source=github)

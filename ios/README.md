@@ -15,8 +15,6 @@ The operating system can suspend or terminate the process without giving it an o
 
 </details>
 
-[Try the iOS practice demo](https://www.mentaro.app/demo?topic=ios&utm_source=github)
-
 ### 2. How does Dynamic Type affect choices about iOS layout?
 
 <details>
@@ -25,8 +23,6 @@ The operating system can suspend or terminate the process without giving it an o
 Users can increase text size substantially. Use scalable fonts and layouts that wrap or reflow instead of assuming labels always fit their default size.
 
 </details>
-
-[Try the iOS practice demo](https://www.mentaro.app/demo?topic=ios&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Use Keychain with accessibility appropriate to when the app needs the secret. Av
 
 </details>
 
-[Try the iOS practice demo](https://www.mentaro.app/demo?topic=ios&utm_source=github)
-
 ### 4. Why should image downsampling happen before displaying a thumbnail?
 
 <details>
@@ -49,8 +43,6 @@ Use Keychain with accessibility appropriate to when the app needs the secret. Av
 Decoding a full-resolution image can allocate much more memory than the rendered thumbnail needs. Decode closer to display size and keep the work off the main thread if it is expensive.
 
 </details>
-
-[Try the iOS practice demo](https://www.mentaro.app/demo?topic=ios&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Profile frame time and main-thread work. Avoid synchronous decoding and oversize
 
 </details>
 
-[Try the iOS practice demo](https://www.mentaro.app/demo?topic=ios&utm_source=github)
-
 ### 6. How do you test an iOS flow that depends on returning from another app?
 
 <details>
@@ -74,10 +64,10 @@ Test cancel, successful return, repeated callbacks and process recreation. Persi
 
 </details>
 
-[Try the iOS practice demo](https://www.mentaro.app/demo?topic=ios&utm_source=github)
-
 ## Official references
 
 - [iOS documentation](https://developer.apple.com/documentation/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the iOS practice demo](https://www.mentaro.app/demo?topic=ios&utm_source=github)

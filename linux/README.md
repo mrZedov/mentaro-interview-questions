@@ -15,8 +15,6 @@ A file descriptor is a process-local integer referring to an open kernel object.
 
 </details>
 
-[Try the Linux practice demo](https://www.mentaro.app/demo?topic=linux&utm_source=github)
-
 ### 2. What is the difference between a process and a thread on Linux?
 
 <details>
@@ -25,8 +23,6 @@ A file descriptor is a process-local integer referring to an open kernel object.
 Threads in a process normally share an address space and resources such as file descriptors, while retaining individual scheduling state and stacks. Separate processes normally have distinct address spaces.
 
 </details>
-
-[Try the Linux practice demo](https://www.mentaro.app/demo?topic=linux&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ A process may still hold an open descriptor to the unlinked file. Find the ownin
 
 </details>
 
-[Try the Linux practice demo](https://www.mentaro.app/demo?topic=linux&utm_source=github)
-
 ### 4. Why is low free memory not always a problem on Linux?
 
 <details>
@@ -49,8 +43,6 @@ A process may still hold an open descriptor to the unlinked file. Find the ownin
 The kernel uses spare memory for reclaimable caches. Look at available memory and pressure or swapping, not free memory alone. Account for container limits as well as host totals.
 
 </details>
-
-[Try the Linux practice demo](https://www.mentaro.app/demo?topic=linux&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Linux load can include tasks in uninterruptible sleep as well as runnable tasks.
 
 </details>
 
-[Try the Linux practice demo](https://www.mentaro.app/demo?topic=linux&utm_source=github)
-
 ### 6. How do you identify whether one workload is causing disk contention?
 
 <details>
@@ -74,10 +64,10 @@ Correlate device latency and queue depth with process or cgroup I/O and workload
 
 </details>
 
-[Try the Linux practice demo](https://www.mentaro.app/demo?topic=linux&utm_source=github)
-
 ## Official references
 
 - [Linux documentation](https://www.kernel.org/doc/html/latest/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Linux practice demo](https://www.mentaro.app/demo?topic=linux&utm_source=github)

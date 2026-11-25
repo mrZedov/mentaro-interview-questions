@@ -27,8 +27,6 @@ function readId(input: unknown): string {
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 2. What does it mean for TypeScript to use structural typing?
 
 <details>
@@ -39,8 +37,6 @@ Compatibility generally depends on available members and their types, not on whe
 **Explanation:** A variable with extra properties is normally assignable to a smaller compatible object type; a fresh literal in that position can receive an excess-property diagnostic. This is a check for likely mistakes, not a claim that the object is sealed.
 
 </details>
-
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
 
 ### 3. When can you use a type alias where an interface is not enough?
 
@@ -53,8 +49,6 @@ An alias can name a union such as Loading | Ready | Failed, a primitive, or a ma
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 4. With strictNullChecks enabled, what would you return from a lookup that might miss?
 
 <details>
@@ -66,8 +60,6 @@ Include the possibility of absence in the return type, such as User | undefined.
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 5. Why can an object property become string even if you initialized it with one string literal?
 
 <details>
@@ -78,8 +70,6 @@ A mutable property may later be assigned a different string, so inference can wi
 **Explanation:** Const protects the variable binding, not the fields of the bound object. A literal field is helpful for a discriminated union; use a targeted annotation if other fields should remain mutable.
 
 </details>
-
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
 
 ## Applied
 
@@ -111,8 +101,6 @@ function describe(result: Result): string {
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 7. Why use a generic rather than a union for a function that picks one property from an object?
 
 <details>
@@ -133,8 +121,6 @@ const fileLength: number = pick({ length: 4, tag: "file" }, "length");
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 8. When would you use satisfies instead of explicitly annotating a configuration object?
 
 <details>
@@ -145,8 +131,6 @@ Use satisfies to check that an expression conforms to a contract without replaci
 **Explanation:** Satisfies is useful for validating a finite set of keys without giving every property the broad type of the target. It can influence contextual typing; the important guarantee is that it does not simply replace the expression’s resulting type with the constraint.
 
 </details>
-
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
 
 ### 9. When is an optional property different from a required property whose value can be undefined?
 
@@ -159,8 +143,6 @@ A required property must be present even if its type allows undefined. An option
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 10. How can TypeScript prevent mixing order IDs and customer IDs when both are strings?
 
 <details>
@@ -171,8 +153,6 @@ Use distinct branded string types and construct them at a trusted validation bou
 **Explanation:** Keep branded IDs behind constructors or decoders. A validated order ID should be granted the order brand at the point where the system knows its domain; asserting the brand at each call site defeats the guard against accidental interchange.
 
 </details>
-
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
 
 ## Advanced scenarios
 
@@ -187,8 +167,6 @@ Check the HTTP result and treat the decoded value as untrusted. Validate the fie
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 12. Can a validator declared as input is Order still cause a runtime failure?
 
 <details>
@@ -199,8 +177,6 @@ Yes. TypeScript does not prove that the declared predicate covers every required
 **Explanation:** A user-defined predicate is a promise to the type checker. If it only tests that a property exists, callers may still assume the property has the right type and invoke methods on it. Negative fixtures are particularly important for these predicates.
 
 </details>
-
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
 
 ### 13. Why might an import compile but fail when a Node.js process starts?
 
@@ -213,8 +189,6 @@ The compiler can resolve a path using options that the runtime does not implemen
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ### 14. How would you migrate a JavaScript boundary without replacing uncertainty with type assertions?
 
 <details>
@@ -225,8 +199,6 @@ Start with one boundary that has a clear contract. Treat incoming values as unkn
 **Explanation:** Choose a boundary that turns an untyped value into a small internal shape. Test malformed and missing input there, then remove downstream assertions that have become redundant. Avoid declaring the entire upstream object valid just because you need one property.
 
 </details>
-
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
 
 ### 15. Why might a callback that accepts a narrower input be unsafe to register?
 
@@ -239,8 +211,6 @@ The caller may pass any value from the wider contract. Under strictFunctionTypes
 
 </details>
 
-[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)
-
 ## Official references
 
 - [TypeScript: Everyday types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
@@ -252,3 +222,5 @@ The caller may pass any value from the wider contract. Under strictFunctionTypes
 - [TypeScript: Choosing compiler options](https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the TypeScript practice demo](https://www.mentaro.app/demo?topic=typescript&utm_source=github)

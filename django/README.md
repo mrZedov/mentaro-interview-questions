@@ -15,8 +15,6 @@ Constructing or chaining it usually does not query the database. Evaluation oper
 
 </details>
 
-[Try the Django practice demo](https://www.mentaro.app/demo?topic=django&utm_source=github)
-
 ### 2. How does a Django model migration differ from model validation?
 
 <details>
@@ -25,8 +23,6 @@ Constructing or chaining it usually does not query the database. Evaluation oper
 Migrations describe persistent schema or data changes. Validation checks values before use and is not automatically run by every save; rely on database constraints for invariants across writers.
 
 </details>
-
-[Try the Django practice demo](https://www.mentaro.app/demo?topic=django&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ select_related joins single-valued relationships in SQL. prefetch_related runs a
 
 </details>
 
-[Try the Django practice demo](https://www.mentaro.app/demo?topic=django&utm_source=github)
-
 ### 4. When is a bulk update preferable to saving each model instance?
 
 <details>
@@ -49,8 +43,6 @@ select_related joins single-valued relationships in SQL. prefetch_related runs a
 Use a bulk operation for set-based work when per-instance save hooks are not required. Verify what signals and validation are bypassed and avoid overwriting concurrent edits.
 
 </details>
-
-[Try the Django practice demo](https://www.mentaro.app/demo?topic=django&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ A worker can run before the database commit. Use on_commit to defer submission u
 
 </details>
 
-[Try the Django practice demo](https://www.mentaro.app/demo?topic=django&utm_source=github)
-
 ### 6. How would you avoid a long lock when adding a data backfill to a large Django table?
 
 <details>
@@ -74,10 +64,10 @@ Separate schema and data changes, process the data in bounded batches, and make 
 
 </details>
 
-[Try the Django practice demo](https://www.mentaro.app/demo?topic=django&utm_source=github)
-
 ## Official references
 
 - [Django documentation](https://docs.djangoproject.com/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Django practice demo](https://www.mentaro.app/demo?topic=django&utm_source=github)

@@ -15,8 +15,6 @@ A tokenizer converts input into model-compatible token IDs and back to text wher
 
 </details>
 
-[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
-
 ### 2. What should you read in a model card before selecting a checkpoint?
 
 <details>
@@ -25,8 +23,6 @@ A tokenizer converts input into model-compatible token IDs and back to text wher
 Check intended use, license, evaluation setup, training disclosures and limitations. A score on one benchmark does not establish fit for your workload or permission for redistribution.
 
 </details>
-
-[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ A branch can change weights, tokenizer or metadata without a deployment. Pin a r
 
 </details>
 
-[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
-
 ### 4. Why test a text-generation model with its intended chat template?
 
 <details>
@@ -49,8 +43,6 @@ A branch can change weights, tokenizer or metadata without a deployment. Pin a r
 The model may expect particular role markers and special tokens. A mismatched template can degrade responses even when the tokenizer and weights load successfully.
 
 </details>
-
-[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Measure token lengths, batch throughput and per-request latency. Compare dynamic
 
 </details>
 
-[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
-
 ### 6. What should an evaluation check before replacing a model with a quantized version?
 
 <details>
@@ -74,10 +64,10 @@ Compare output quality on representative cases, including edge cases, as well as
 
 </details>
 
-[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
-
 ## Official references
 
 - [Hugging Face documentation](https://huggingface.co/docs)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)

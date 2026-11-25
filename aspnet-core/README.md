@@ -15,8 +15,6 @@ Requests enter middleware in registration order, and responses unwind in reverse
 
 </details>
 
-[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
-
 ### 2. Which lifetimes does the ASP.NET Core service container offer?
 
 <details>
@@ -25,8 +23,6 @@ Requests enter middleware in registration order, and responses unwind in reverse
 Transient services are created on resolution, scoped services are shared within a scope, and singleton services are shared across the container. Avoid making a singleton retain a scoped service.
 
 </details>
-
-[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Create and dispose a dependency injection scope per unit of work. Resolve the co
 
 </details>
 
-[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
-
 ### 4. How do you test authorization rules without deploying an ASP.NET Core application?
 
 <details>
@@ -49,8 +43,6 @@ Create and dispose a dependency injection scope per unit of work. Resolve the co
 Host the real application with WebApplicationFactory, replace authentication in the test host, and exercise endpoints over its test client. Include an authenticated user who lacks the required permission.
 
 </details>
-
-[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Blocking calls can occupy thread-pool threads while work queues. Check thread-po
 
 </details>
 
-[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
-
 ### 6. Why might an application generate HTTP callback URLs behind an HTTPS proxy?
 
 <details>
@@ -74,10 +64,10 @@ The app may see only its internal HTTP connection. Configure forwarded headers f
 
 </details>
 
-[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
-
 ## Official references
 
 - [ASP.NET Core documentation](https://learn.microsoft.com/aspnet/core/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)

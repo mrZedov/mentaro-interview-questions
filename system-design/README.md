@@ -15,8 +15,6 @@ Ask who uses the system, the main operations and their required availability and
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 2. Why estimate peak traffic separately from daily traffic?
 
 <details>
@@ -27,8 +25,6 @@ A daily average can hide bursts that overwhelm queues or connection pools. Estim
 **Explanation:** One million requests a day averages about 12 per second. If 10% arrive within one minute, that minute averages about 1,667 requests per second. Then look inside that minute: short bursts matter for queue limits, while sustained bursts determine how long reduced capacity can last.
 
 </details>
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
 
 ### 3. How do a replication strategy and a partitioning strategy differ?
 
@@ -41,8 +37,6 @@ Replication creates copies of data for redundancy or reads. Partitioning divides
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 4. What does a stateless application tier make easier?
 
 <details>
@@ -54,8 +48,6 @@ Any healthy instance can normally serve a request, so scaling and recovery do no
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 5. What does p99 latency tell you that average latency does not?
 
 <details>
@@ -66,8 +58,6 @@ It describes the threshold at or below which about 99% of observations fall. A s
 **Explanation:** A p99 of 300 ms does not tell you how slow the worst one percent is. Read it alongside error rate, traffic volume and endpoint breakdowns, and do not average percentiles from different servers to derive a global percentile.
 
 </details>
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
 
 ## Applied
 
@@ -82,8 +72,6 @@ Keys can be evenly distributed while traffic is highly skewed. A popular item ca
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 7. How would you provide read-your-writes after moving reads to replicas?
 
 <details>
@@ -94,8 +82,6 @@ Read from the primary temporarily, or use a commit position and wait for a repli
 **Explanation:** A commit position returned with a write can let a reader select a replica that has caught up. Put a bound on how long it waits, then fall back to the primary or return an explicit retryable response.
 
 </details>
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
 
 ### 8. When does an asynchronous job queue improve perceived latency?
 
@@ -108,8 +94,6 @@ It lets the user receive acceptance without waiting for processing. Expose statu
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 9. How would you limit cache stampedes when a popular entry expires?
 
 <details>
@@ -120,8 +104,6 @@ Coalesce concurrent refreshes, stagger expirations and consider serving stale va
 **Explanation:** Single-flight cuts work when many requests miss the same key; randomized TTLs help when many keys expire together. Serving stale data can hide refresh latency, but set a hard age limit based on the application’s decisions.
 
 </details>
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
 
 ### 10. When would you keep a materialized read model instead of querying the source of truth directly?
 
@@ -134,8 +116,6 @@ Use a projection when read latency or query shape justifies the extra representa
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 11. How do you choose a pagination approach for a feed that changes during browsing?
 
 <details>
@@ -146,8 +126,6 @@ Use a cursor based on a stable total ordering, including a unique tie-breaker. D
 **Explanation:** Offset pagination counts positions in a moving list. A cursor can anchor on the last observed ordering key, but edits to that key can still cause omissions or duplicates; use snapshot semantics when a consistent export matters more than live updates.
 
 </details>
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
 
 ## Advanced scenarios
 
@@ -162,8 +140,6 @@ Synchronous replication can reduce loss at the cost of latency and availability 
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 13. How do recovery point and recovery time objectives shape backups?
 
 <details>
@@ -174,8 +150,6 @@ Recovery point is tolerable data loss measured in time; recovery time is how lon
 **Explanation:** A five-minute RPO and a one-hour RTO mean you may lose at most five minutes of changes and should restore service within an hour. Verify both by restoring a backup and replaying representative logs under timed conditions.
 
 </details>
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
 
 ### 14. How does fan-out affect latency when a request waits for every dependency?
 
@@ -188,8 +162,6 @@ The slowest required response dominates. As fan-out grows, a rare slow dependenc
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 15. What is load shedding and how do you choose what to shed?
 
 <details>
@@ -200,8 +172,6 @@ Reject or defer work before saturation makes all requests fail. Protect the chea
 **Explanation:** Admission control before expensive work can protect capacity for priority requests. Keep the policy explicit and monitor which clients or operations are rejected; unconstrained immediate retries can undo the benefit.
 
 </details>
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
 
 ### 16. How would you prove a design can survive losing its largest node?
 
@@ -214,8 +184,6 @@ Check remaining headroom and run a controlled failure test under representative 
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ### 17. How would you roll back a feature after it has already written a new data format?
 
 <details>
@@ -227,11 +195,11 @@ Keep the old version able to read transitional writes or separate the format rol
 
 </details>
 
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
-
 ## Official references
 
 - [Google SRE: Service level objectives](https://sre.google/sre-book/service-level-objectives/)
 - [Google SRE: Addressing cascading failures](https://sre.google/sre-book/addressing-cascading-failures/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)

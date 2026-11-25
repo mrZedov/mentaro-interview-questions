@@ -15,8 +15,6 @@ Rendering calls components to compute UI. Committing applies the resulting chang
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 2. Why can two setCount(count + 1) calls increment only once?
 
 <details>
@@ -37,8 +35,6 @@ function incrementTwice(setCount) {
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 3. What makes a useful key for a list of editable rows?
 
 <details>
@@ -49,8 +45,6 @@ Use a stable identity from the data, unique among siblings. A positional key can
 **Explanation:** With index keys, inserting a row at the top can move an input’s draft to the next record. Use an ID stable across edits and reordering. A freshly generated key on every render resets state instead of preserving it.
 
 </details>
-
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
 
 ### 4. What does it mean for an input to be controlled?
 
@@ -63,8 +57,6 @@ React state or props supply its current value and an onChange handler updates th
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 5. When should state be lifted to a common parent?
 
 <details>
@@ -75,8 +67,6 @@ Lift it when multiple children need to coordinate through one authoritative valu
 **Explanation:** Two sibling controls that must agree should share a state owner. Keeping two copies and synchronizing them through effects introduces drift and extra updates; lift only the shared state, not unrelated local UI details.
 
 </details>
-
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
 
 ## Applied
 
@@ -91,8 +81,6 @@ If the list is a pure function of input props and state, compute it during rende
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 7. How do you avoid leaking subscriptions when an effect dependency changes?
 
 <details>
@@ -103,8 +91,6 @@ Return cleanup from the effect to unsubscribe the exact listener it registered. 
 **Explanation:** Close over the exact connection created by each setup, then dispose that connection when dependencies change. Test changing the selected channel without unmounting, because cleanup must run on replacement too.
 
 </details>
-
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
 
 ### 8. When should you use a ref instead of state?
 
@@ -117,8 +103,6 @@ Use a ref for a value that survives renders but does not determine the rendered 
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 9. What causes an effect to reconnect on every render?
 
 <details>
@@ -129,8 +113,6 @@ A dependency may be a fresh object or function each time. Move construction insi
 **Explanation:** An object created during every render has a different identity, even if it contains the same fields. Construct configuration inside the effect if only the effect needs it, and depend on the meaningful primitives.
 
 </details>
-
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
 
 ### 10. How do you reset a form when the selected account changes?
 
@@ -143,8 +125,6 @@ If the account defines a distinct form instance, key the form by account ID. Rea
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 11. When is a reducer useful for a component with several related state variables?
 
 <details>
@@ -155,8 +135,6 @@ A reducer groups state transitions around explicit actions. It can make coupled 
 **Explanation:** Model a transition such as checkout success in one reducer action so status and receipt cannot drift apart. Trigger network effects outside that reducer and pass the result back as a second action.
 
 </details>
-
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
 
 ## Advanced scenarios
 
@@ -171,8 +149,6 @@ It tests whether setup can be undone cleanly. Fix missing cleanup or impure work
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 13. Why might memoizing a child fail to reduce its renders?
 
 <details>
@@ -183,8 +159,6 @@ Fresh object or callback props can defeat shallow comparison, and the child's ow
 **Explanation:** A fresh object or callback can make a memoized child receive different props each render. Check the profiler first: memoization is not a useful fix if the child is already cheap or updates because of its own state or context.
 
 </details>
-
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
 
 ### 14. How do you stop obsolete search results replacing current React state?
 
@@ -197,8 +171,6 @@ Abort previous requests where possible and ignore outcomes from outdated effects
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 15. What does an error boundary not catch by default?
 
 <details>
@@ -209,8 +181,6 @@ It handles rendering failures in descendants, not arbitrary event-handler errors
 **Explanation:** Handle failures in interaction callbacks and asynchronous work at the appropriate boundary. An error boundary is useful for failed rendering of descendants; it is not a global application error handler.
 
 </details>
-
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
 
 ### 16. Why can time-dependent rendering cause a hydration mismatch?
 
@@ -223,8 +193,6 @@ The initial server HTML and initial client render may use different times or loc
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ### 17. Why can updating a widely used context from high-frequency input make typing slow?
 
 <details>
@@ -236,11 +204,11 @@ Consumers that read the context rerender when its value changes. Profile the aff
 
 </details>
 
-[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)
-
 ## Official references
 
 - [React: Render and commit](https://react.dev/learn/render-and-commit)
 - [React: Synchronizing with effects](https://react.dev/learn/synchronizing-with-effects)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the React practice demo](https://www.mentaro.app/demo?topic=react&utm_source=github)

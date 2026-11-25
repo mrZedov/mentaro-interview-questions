@@ -15,8 +15,6 @@ A point has an ID and one or more configured vectors, with optional payload meta
 
 </details>
 
-[Try the Qdrant practice demo](https://www.mentaro.app/demo?topic=qdrant&utm_source=github)
-
 ### 2. Why choose a vector distance when creating a Qdrant collection?
 
 <details>
@@ -25,8 +23,6 @@ A point has an ID and one or more configured vectors, with optional payload meta
 The distance determines how vectors are ranked. Match it to the embedding model and preprocessing rather than assuming the same metric preserves rankings across representations.
 
 </details>
-
-[Try the Qdrant practice demo](https://www.mentaro.app/demo?topic=qdrant&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Selectivity changes how many points are eligible and which access strategy is ef
 
 </details>
 
-[Try the Qdrant practice demo](https://www.mentaro.app/demo?topic=qdrant&utm_source=github)
-
 ### 4. How would you check whether an approximate index misses relevant results?
 
 <details>
@@ -49,8 +43,6 @@ Selectivity changes how many points are eligible and which access strategy is ef
 Build a reference with exact search over representative queries and filters. Compare recall and latency at the same result count and tune the search parameters under your workload.
 
 </details>
-
-[Try the Qdrant practice demo](https://www.mentaro.app/demo?topic=qdrant&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Build a new vector representation alongside the old one, backfill it, and valida
 
 </details>
 
-[Try the Qdrant practice demo](https://www.mentaro.app/demo?topic=qdrant&utm_source=github)
-
 ### 6. How can ingestion affect serving for a Qdrant collection?
 
 <details>
@@ -74,10 +64,10 @@ Large writes consume indexing, memory and storage capacity. Batch ingestion, obs
 
 </details>
 
-[Try the Qdrant practice demo](https://www.mentaro.app/demo?topic=qdrant&utm_source=github)
-
 ## Official references
 
 - [Qdrant documentation](https://qdrant.tech/documentation/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Qdrant practice demo](https://www.mentaro.app/demo?topic=qdrant&utm_source=github)

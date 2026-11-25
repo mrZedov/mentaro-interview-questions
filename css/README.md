@@ -25,8 +25,6 @@ An element with both id and class set to status is green despite the ID selector
 
 </details>
 
-[Try the CSS practice demo](https://www.mentaro.app/demo?topic=css&utm_source=github)
-
 ### 2. What does box-sizing: border-box change?
 
 <details>
@@ -48,8 +46,6 @@ The declared width or height includes padding and border, but not margin. With c
 ```
 
 </details>
-
-[Try the CSS practice demo](https://www.mentaro.app/demo?topic=css&utm_source=github)
 
 ## Applied
 
@@ -76,8 +72,6 @@ The automatic minimum size can prevent the flex item from shrinking below its co
 
 </details>
 
-[Try the CSS practice demo](https://www.mentaro.app/demo?topic=css&utm_source=github)
-
 ### 4. When is a container query better than a media query?
 
 <details>
@@ -98,8 +92,6 @@ Use a container query when a component should adapt to the space allocated by it
 
 </details>
 
-[Try the CSS practice demo](https://www.mentaro.app/demo?topic=css&utm_source=github)
-
 ## Advanced scenarios
 
 ### 5. How would you debug a modal that appears behind a neighboring panel despite a large z-index?
@@ -113,8 +105,6 @@ Inspect stacking contexts created by ancestors. A child cannot escape its contex
 
 </details>
 
-[Try the CSS practice demo](https://www.mentaro.app/demo?topic=css&utm_source=github)
-
 ### 6. How would you diagnose visible layout shifts when web fonts load?
 
 <details>
@@ -126,10 +116,10 @@ Record the layout shifts and identify their affected elements. Compare fallback 
 
 </details>
 
-[Try the CSS practice demo](https://www.mentaro.app/demo?topic=css&utm_source=github)
-
 ## Official references
 
 - [CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the CSS practice demo](https://www.mentaro.app/demo?topic=css&utm_source=github)

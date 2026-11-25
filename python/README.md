@@ -15,8 +15,6 @@ No. Assignment binds the new name to the same object. Mutating through either re
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 2. When should you use is rather than ==?
 
 <details>
@@ -27,8 +25,6 @@ Is checks identity, as in value is None. Equality compares values according to t
 **Explanation:** Use identity for a unique sentinel such as None or a private object. Use equality for values like integers or strings; interning can make identity comparisons appear to work in tests without being a valid value comparison.
 
 </details>
-
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
 
 ### 3. Why does a list used as a parameter default retain earlier calls' data?
 
@@ -54,8 +50,6 @@ assert add("b") == ["b"]
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 4. What makes a value eligible as a dictionary key?
 
 <details>
@@ -66,8 +60,6 @@ A key must be hashable: its hash must remain stable and equal keys must have equ
 **Explanation:** A hashable object needs a stable hash, and objects that compare equal must hash equally. A tuple containing a list is not hashable just because the tuple itself is immutable. Prefer an immutable identity value for dictionary keys.
 
 </details>
-
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
 
 ### 5. What is the difference between an iterable and an iterator?
 
@@ -80,8 +72,6 @@ An iterable can supply an iterator; an iterator itself remembers position and yi
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 6. What does a Python finally block guarantee when the try block returns?
 
 <details>
@@ -92,8 +82,6 @@ Under normal control flow, finally runs before the caller receives the result. A
 **Explanation:** The return value is determined before the finally suite runs, but finally may still modify a returned mutable object before the caller sees it. Keep cleanup separate from business return logic and do not return from finally.
 
 </details>
-
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
 
 ## Applied
 
@@ -107,8 +95,6 @@ It copies the outer mapping but retains references to the original values. Copy 
 **Explanation:** A shallow copy produces a new outer mapping while preserving references to its values. Copy the specific nested branch you will change, or choose deep copy only if its behavior matches the object graph and ownership you intend.
 
 </details>
-
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
 
 ### 8. How does a generator help process a file larger than memory?
 
@@ -129,8 +115,6 @@ def count_errors(path):
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 9. How can a context manager preserve cleanup when parsing throws?
 
 <details>
@@ -142,8 +126,6 @@ The with statement invokes exit handling once entry succeeds, whether the block 
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 10. Do type annotations validate values passed by a caller?
 
 <details>
@@ -154,8 +136,6 @@ Not by themselves. A static checker can find inconsistent calls in code, but an 
 **Explanation:** Annotations help tools and readers, but a call with the wrong runtime value still enters an ordinary annotated function. Add validation at untrusted boundaries rather than repeating it everywhere after successful parsing.
 
 </details>
-
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
 
 ### 11. Why do callbacks created in a loop sometimes all use the last loop value?
 
@@ -175,8 +155,6 @@ assert [callback() for callback in callbacks] == [0, 1, 2]
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ## Advanced scenarios
 
 ### 12. When would you use processes rather than threads for Python work?
@@ -190,8 +168,6 @@ In conventional GIL-enabled CPython, processes can run CPU-bound Python bytecode
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 13. Why does an async handler stall its neighbors during a blocking call?
 
 <details>
@@ -202,8 +178,6 @@ The event loop thread cannot run other tasks until the call returns. Use an asyn
 **Explanation:** Putting a blocking client call inside async def does not make that client asynchronous. Replace it with an async implementation or move bounded blocking work off the event loop, with timeout and cancellation behavior spelled out.
 
 </details>
-
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
 
 ### 14. How do you diagnose slow membership checks over a growing list?
 
@@ -216,8 +190,6 @@ Profile first. List membership scans elements; a set is usually faster for repea
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 15. Why should you catch a specific exception when reading a configuration file?
 
 <details>
@@ -228,8 +200,6 @@ A missing file may justify a documented default; malformed content or denied acc
 **Explanation:** A missing file might justify using defaults, while a permission failure or malformed file should usually be visible. Keep the try block narrow so that a failure later in parsing is not accidentally reported as a missing configuration file.
 
 </details>
-
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
 
 ### 16. How do you stop one large input from exhausting memory in a worker?
 
@@ -242,8 +212,6 @@ Set explicit size limits and process records in bounded batches or streams. Meas
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ### 17. What happens if an asyncio task swallows cancellation?
 
 <details>
@@ -255,11 +223,11 @@ Structured concurrency and timeout machinery may not finish as intended. Use try
 
 </details>
 
-[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)
-
 ## Official references
 
 - [Python: Data model](https://docs.python.org/3/reference/datamodel.html)
 - [Python: Concurrent execution](https://docs.python.org/3/library/concurrency.html)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Python practice demo](https://www.mentaro.app/demo?topic=python&utm_source=github)

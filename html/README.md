@@ -15,8 +15,6 @@ Use a link for navigation to a destination and a button for an action. Native co
 
 </details>
 
-[Try the HTML practice demo](https://www.mentaro.app/demo?topic=html&utm_source=github)
-
 ### 2. Why give a form control a name even when it already has an ID?
 
 <details>
@@ -25,8 +23,6 @@ Use a link for navigation to a destination and a button for an action. Native co
 The ID identifies the element in the document and can associate it with a label. The name identifies a successful control in submitted form data.
 
 </details>
-
-[Try the HTML practice demo](https://www.mentaro.app/demo?topic=html&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Link the label to the input with matching for and id values. Reference descripti
 
 </details>
 
-[Try the HTML practice demo](https://www.mentaro.app/demo?topic=html&utm_source=github)
-
 ### 4. When should alternative text for an image be empty?
 
 <details>
@@ -49,8 +43,6 @@ Link the label to the input with matching for and id values. Reference descripti
 Use empty alt text for a decorative image or when adjacent content already provides the same meaning. Give meaningful images concise equivalent text; for a linked image consider the action or destination.
 
 </details>
-
-[Try the HTML practice demo](https://www.mentaro.app/demo?topic=html&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Keyboard focus generally follows document order, not the apparent order created 
 
 </details>
 
-[Try the HTML practice demo](https://www.mentaro.app/demo?topic=html&utm_source=github)
-
 ### 6. How would you verify that a dialog is usable without a mouse?
 
 <details>
@@ -74,10 +64,10 @@ Open it via keyboard, check initial focus and navigation inside it, dismiss it a
 
 </details>
 
-[Try the HTML practice demo](https://www.mentaro.app/demo?topic=html&utm_source=github)
-
 ## Official references
 
 - [HTML documentation](https://html.spec.whatwg.org/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the HTML practice demo](https://www.mentaro.app/demo?topic=html&utm_source=github)

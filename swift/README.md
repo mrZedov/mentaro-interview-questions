@@ -15,8 +15,6 @@ Use a struct when independent value semantics fit the data. Use a class when sha
 
 </details>
 
-[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
-
 ### 2. How does optional binding differ from force unwrapping in Swift?
 
 <details>
@@ -25,8 +23,6 @@ Use a struct when independent value semantics fit the data. Use a class when sha
 Optional binding handles the missing case and exposes a value only when it exists. Force unwrapping traps on nil and should only follow a separately enforced invariant.
 
 </details>
-
-[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ An escaping closure can capture an owner strongly while the owner retains the cl
 
 </details>
 
-[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
-
 ### 4. What is the benefit of implementing a protocol with associated types?
 
 <details>
@@ -49,8 +43,6 @@ An escaping closure can capture an owner strongly while the owner retains the cl
 It lets a conforming type specify related types while preserving relationships in generic code. Choose a generic API or a suitably constrained existential based on what the caller must know.
 
 </details>
-
-[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Actors can run other messages while an operation is suspended. An invariant chec
 
 </details>
 
-[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
-
 ### 6. How do you cancel a Swift task without leaving resources in an inconsistent state?
 
 <details>
@@ -74,10 +64,10 @@ Cancellation is cooperative. Check cancellation at meaningful boundaries, use de
 
 </details>
 
-[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
-
 ## Official references
 
 - [Swift documentation](https://www.swift.org/documentation/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)

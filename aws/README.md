@@ -15,8 +15,6 @@ A Region is a geographic area. An Availability Zone is an isolated infrastructur
 
 </details>
 
-[Try the AWS practice demo](https://www.mentaro.app/demo?topic=aws&utm_source=github)
-
 ### 2. What is the difference between an IAM role and a policy?
 
 <details>
@@ -25,8 +23,6 @@ A Region is a geographic area. An Availability Zone is an isolated infrastructur
 A role is an assumable identity. Policies express rules or permissions. A role trust policy describes who may assume it; identity policies describe what the resulting session can do, subject to other controls.
 
 </details>
-
-[Try the AWS practice demo](https://www.mentaro.app/demo?topic=aws&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Treat delivery and processing as separate. Store a stable job ID with the effect
 
 </details>
 
-[Try the AWS practice demo](https://www.mentaro.app/demo?topic=aws&utm_source=github)
-
 ### 4. How do you detect a Lambda consumer that cannot keep up with an SQS queue?
 
 <details>
@@ -49,8 +43,6 @@ Treat delivery and processing as separate. Store a stable job ID with the effect
 Watch the age of the oldest message, backlog, errors and throttles together. Tune concurrency and batching against downstream capacity, and route repeatedly failing messages to a monitored dead-letter queue.
 
 </details>
-
-[Try the AWS practice demo](https://www.mentaro.app/demo?topic=aws&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Authorize the operation in the application and issue narrowly scoped short-lived
 
 </details>
 
-[Try the AWS practice demo](https://www.mentaro.app/demo?topic=aws&utm_source=github)
-
 ### 6. How would you rehearse recovery of an AWS-hosted database?
 
 <details>
@@ -74,10 +64,10 @@ Restore into an isolated environment, measure restoration time, and check whethe
 
 </details>
 
-[Try the AWS practice demo](https://www.mentaro.app/demo?topic=aws&utm_source=github)
-
 ## Official references
 
 - [AWS documentation](https://docs.aws.amazon.com/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the AWS practice demo](https://www.mentaro.app/demo?topic=aws&utm_source=github)

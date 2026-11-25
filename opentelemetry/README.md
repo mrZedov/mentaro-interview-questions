@@ -15,8 +15,6 @@ A span represents one operation with timing, attributes and relationships. A tra
 
 </details>
 
-[Try the OpenTelemetry practice demo](https://www.mentaro.app/demo?topic=opentelemetry&utm_source=github)
-
 ### 2. What does context propagation provide across process boundaries?
 
 <details>
@@ -25,8 +23,6 @@ A span represents one operation with timing, attributes and relationships. A tra
 It lets a downstream service correlate work with its upstream trace and parent span. Inject and extract context through supported carriers and only propagate baggage appropriate for the destination.
 
 </details>
-
-[Try the OpenTelemetry practice demo](https://www.mentaro.app/demo?topic=opentelemetry&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Values such as user IDs or raw paths can create unbounded time series and high s
 
 </details>
 
-[Try the OpenTelemetry practice demo](https://www.mentaro.app/demo?topic=opentelemetry&utm_source=github)
-
 ### 4. When would you use a span event instead of creating a child span?
 
 <details>
@@ -49,8 +43,6 @@ Values such as user IDs or raw paths can create unbounded time series and high s
 Use a span event for a point-in-time milestone in an existing operation. Use a child span for work with an independent duration or context that you want to inspect separately.
 
 </details>
-
-[Try the OpenTelemetry practice demo](https://www.mentaro.app/demo?topic=opentelemetry&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Propagation may be broken, the trace may be sampled out, or instrumentation may 
 
 </details>
 
-[Try the OpenTelemetry practice demo](https://www.mentaro.app/demo?topic=opentelemetry&utm_source=github)
-
 ### 6. What is the operational trade-off between head and tail sampling?
 
 <details>
@@ -74,10 +64,10 @@ Head sampling decides early without later outcomes. Tail sampling can retain int
 
 </details>
 
-[Try the OpenTelemetry practice demo](https://www.mentaro.app/demo?topic=opentelemetry&utm_source=github)
-
 ## Official references
 
 - [OpenTelemetry documentation](https://opentelemetry.io/docs/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the OpenTelemetry practice demo](https://www.mentaro.app/demo?topic=opentelemetry&utm_source=github)

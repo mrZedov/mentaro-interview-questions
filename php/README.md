@@ -15,8 +15,6 @@ PHP may coerce operand types with loose comparison. Parse the incoming string ex
 
 </details>
 
-[Try the PHP practice demo](https://www.mentaro.app/demo?topic=php&utm_source=github)
-
 ### 2. What does PHP strict_types change at a function boundary?
 
 <details>
@@ -25,8 +23,6 @@ PHP may coerce operand types with loose comparison. Parse the incoming string ex
 For scalar parameter declarations in user-defined functions, it controls coercion based on the calling file. It does not validate array shapes or convert HTTP input into trusted data.
 
 </details>
-
-[Try the PHP practice demo](https://www.mentaro.app/demo?topic=php&utm_source=github)
 
 ## Applied
 
@@ -39,8 +35,6 @@ Read and parse rows incrementally, keep a bounded batch for writes and report ma
 
 </details>
 
-[Try the PHP practice demo](https://www.mentaro.app/demo?topic=php&utm_source=github)
-
 ### 4. How can you distinguish an absent input field from a present null in PHP?
 
 <details>
@@ -49,8 +43,6 @@ Read and parse rows incrementally, keep a bounded batch for writes and report ma
 Use array_key_exists when you care about presence, since isset is false for missing and null values. Decide explicitly whether null should clear the field or be rejected.
 
 </details>
-
-[Try the PHP practice demo](https://www.mentaro.app/demo?topic=php&utm_source=github)
 
 ## Advanced scenarios
 
@@ -63,8 +55,6 @@ Mutable state can survive between requests. Avoid storing request identity or da
 
 </details>
 
-[Try the PHP practice demo](https://www.mentaro.app/demo?topic=php&utm_source=github)
-
 ### 6. Why might increasing PHP-FPM workers make a site slower?
 
 <details>
@@ -74,10 +64,10 @@ More workers consume memory and can overwhelm databases or other dependencies. C
 
 </details>
 
-[Try the PHP practice demo](https://www.mentaro.app/demo?topic=php&utm_source=github)
-
 ## Official references
 
 - [PHP documentation](https://www.php.net/manual/en/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the PHP practice demo](https://www.mentaro.app/demo?topic=php&utm_source=github)

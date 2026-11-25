@@ -15,8 +15,6 @@ It emits one row for each matching pair. Three left rows and four right rows sha
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 2. How does COUNT(*) differ from COUNT(column)?
 
 <details>
@@ -37,8 +35,6 @@ GROUP BY c.id;
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 3. Why does column = NULL not find missing values?
 
 <details>
@@ -49,8 +45,6 @@ Ordinary comparisons with NULL generally evaluate to unknown, and WHERE retains 
 **Explanation:** SQL conditions can be true, false or unknown; WHERE keeps only true. Use IS NULL for missingness. In PostgreSQL, IS NOT DISTINCT FROM compares two values while treating two nulls as equal.
 
 </details>
-
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
 
 ### 4. When does a filter belong in HAVING rather than WHERE?
 
@@ -73,8 +67,6 @@ HAVING SUM(amount) >= 100;
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 5. How does UNION ALL differ from UNION?
 
 <details>
@@ -85,8 +77,6 @@ UNION ALL keeps every input row. UNION removes duplicate result rows across and 
 **Explanation:** If shipment and pickup events carry the same date and customer, they can still be separate events. UNION drops identical projected tuples; UNION ALL preserves them and avoids a duplicate-elimination step.
 
 </details>
-
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
 
 ## Applied
 
@@ -110,8 +100,6 @@ LEFT JOIN orders AS o
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 7. What can go wrong with NOT IN when the subquery returns NULL?
 
 <details>
@@ -122,8 +110,6 @@ A non-matching row may evaluate to unknown rather than true because of the NULL 
 **Explanation:** A NULL in the subquery can turn every nonmatching comparison into unknown. NOT EXISTS normally expresses the intended anti-join; decide separately whether a NULL on the outer side should qualify.
 
 </details>
-
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
 
 ### 8. When should you use a window function instead of GROUP BY?
 
@@ -136,8 +122,6 @@ Use a window function when you need to retain detail rows and also calculate val
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 9. How do ROW_NUMBER, RANK and DENSE_RANK treat ties?
 
 <details>
@@ -148,8 +132,6 @@ ROW_NUMBER assigns distinct positions. RANK gives ties the same position and lea
 **Explanation:** For scores 100, 100, 90, RANK yields 1, 1, 3 and DENSE_RANK yields 1, 1, 2. ROW_NUMBER assigns three distinct positions; add a unique tie-breaker if equal scores need predictable order.
 
 </details>
-
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
 
 ### 10. Why can a running total jump across rows with the same timestamp?
 
@@ -162,8 +144,6 @@ The default ordered window frame in many systems includes peers with equal order
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 11. How do you return one latest row per customer when two rows have the same timestamp?
 
 <details>
@@ -175,8 +155,6 @@ Rank rows in each customer partition by descending timestamp and a stable unique
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 12. When is EXISTS clearer than joining a table and removing duplicates?
 
 <details>
@@ -187,8 +165,6 @@ Use EXISTS when the condition is whether at least one related row qualifies. It 
 **Explanation:** A semi-join asks whether a match exists without selecting a matching row. It keeps each outer row once even when several matches qualify; it does not deduplicate duplicates that already exist in the outer input.
 
 </details>
-
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
 
 ## Advanced scenarios
 
@@ -203,8 +179,6 @@ Multiple rows on each child side multiply matches per order. Aggregate each chil
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 14. How can applying a function to a timestamp make filtering slower?
 
 <details>
@@ -216,8 +190,6 @@ A predicate on a transformed column may not use a normal index on the column. Pr
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 15. How would you index a query that filters by account and returns its newest events?
 
 <details>
@@ -228,8 +200,6 @@ Consider an index starting with account ID and then the ordering key and tie-bre
 **Explanation:** An index starting with account ID can narrow the scan to one account, then return timestamps in index order. Add the ordered tie-breaker if the endpoint uses it for pagination and verify the actual plan with a realistic tenant.
 
 </details>
-
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
 
 ### 16. How do you claim a limited unit without overselling under concurrency?
 
@@ -252,8 +222,6 @@ A zero affected-row count means no unit was claimed.
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ### 17. Why might adding DISTINCT hide a data bug?
 
 <details>
@@ -265,11 +233,11 @@ It discards equal output rows but does not fix a bad join or incorrect business 
 
 </details>
 
-[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
-
 ## Official references
 
 - [PostgreSQL: Table expressions](https://www.postgresql.org/docs/current/queries-table-expressions.html)
 - [PostgreSQL: Window functions](https://www.postgresql.org/docs/current/tutorial-window.html)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[Try the SQL practice demo](https://www.mentaro.app/demo?topic=sql-language&utm_source=github)
