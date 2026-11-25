@@ -96,9 +96,18 @@ Use a build secret mount for the single step that needs it. Avoid putting the va
 
 </details>
 
+### 11. What does a .dockerignore file protect beyond build performance?
+
+<details>
+<summary>Show answer</summary>
+
+It excludes matching files from the build context, reducing what is sent to the builder and what a broad COPY can include. It is not a substitute for secret mounts or reviewing final image contents.
+
+</details>
+
 ## Advanced scenarios
 
-### 11. A process is healthy inside the container but unreachable through a published port. What do you check?
+### 12. A process is healthy inside the container but unreachable through a published port. What do you check?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +116,7 @@ Confirm the mapping uses the actual container port. Check that the process liste
 
 </details>
 
-### 12. Why can two containers not reach each other through localhost?
+### 13. Why can two containers not reach each other through localhost?
 
 <details>
 <summary>Show answer</summary>
@@ -116,7 +125,7 @@ Each container generally has its own loopback interface. Put them on the intende
 
 </details>
 
-### 13. Why does a container fail to shut down gracefully?
+### 14. Why does a container fail to shut down gracefully?
 
 <details>
 <summary>Show answer</summary>
@@ -125,7 +134,7 @@ Check what runs as PID 1 and whether it receives and forwards the stop signal. U
 
 </details>
 
-### 14. Why does deleting build files in a later layer not reclaim their image size?
+### 15. Why does deleting build files in a later layer not reclaim their image size?
 
 <details>
 <summary>Show answer</summary>
@@ -134,7 +143,7 @@ Earlier layers still contain the bytes. Avoid copying unnecessary files, remove 
 
 </details>
 
-### 15. An image works on a laptop but fails with an exec format error on a server. Where do you look?
+### 16. An image works on a laptop but fails with an exec format error on a server. Where do you look?
 
 <details>
 <summary>Show answer</summary>
@@ -143,9 +152,18 @@ Check the image platform and the architecture of copied executables. Build and t
 
 </details>
 
+### 17. Why can mounting a directory make files from the image seem to disappear?
+
+<details>
+<summary>Show answer</summary>
+
+The mount covers the image contents at that path for the lifetime of the container. Check whether the mount point overlaps required files, then mount only the data directory or initialize it explicitly.
+
+</details>
+
 ## Official references
 
 - [Docker: Build cache](https://docs.docker.com/build/cache/)
 - [Docker: Networking](https://docs.docker.com/engine/network/)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/docker). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

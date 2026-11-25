@@ -87,9 +87,18 @@ A required property must be present even if its type allows undefined. An option
 
 </details>
 
+### 10. How can TypeScript prevent mixing order IDs and customer IDs when both are strings?
+
+<details>
+<summary>Show answer</summary>
+
+Use distinct branded string types and construct them at a trusted validation boundary. The brand prevents accidental interchange at compile time; it does not validate a string received over the network.
+
+</details>
+
 ## Advanced scenarios
 
-### 10. A response is assigned to User after JSON parsing. What evidence do you need before using it?
+### 11. A response is assigned to User after JSON parsing. What evidence do you need before using it?
 
 <details>
 <summary>Show answer</summary>
@@ -98,7 +107,7 @@ Check the HTTP result and treat the decoded value as untrusted. Validate the fie
 
 </details>
 
-### 11. Can a validator declared as input is Order still cause a runtime failure?
+### 12. Can a validator declared as input is Order still cause a runtime failure?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +116,7 @@ Yes. TypeScript does not prove that the declared predicate covers every required
 
 </details>
 
-### 12. Why might an import compile but fail when a Node.js process starts?
+### 13. Why might an import compile but fail when a Node.js process starts?
 
 <details>
 <summary>Show answer</summary>
@@ -116,12 +125,21 @@ The compiler can resolve a path using options that the runtime does not implemen
 
 </details>
 
-### 13. How would you migrate a JavaScript boundary without replacing uncertainty with type assertions?
+### 14. How would you migrate a JavaScript boundary without replacing uncertainty with type assertions?
 
 <details>
 <summary>Show answer</summary>
 
 Start with one boundary that has a clear contract. Treat incoming values as unknown, validate what is needed and return a narrow typed result to consumers. Keep checks for missing or malformed data in tests. Then migrate callers incrementally so the strongest guarantees are concentrated where data enters the typed code.
+
+</details>
+
+### 15. Why might a callback that accepts a narrower input be unsafe to register?
+
+<details>
+<summary>Show answer</summary>
+
+The caller may pass any value from the wider contract. Under strictFunctionTypes, ordinary function parameters are checked contravariantly; method signatures have a bivariant exception. Test the public type contract rather than relying on convenient inference.
 
 </details>
 
@@ -135,4 +153,4 @@ Start with one boundary that has a clear contract. Treat incoming values as unkn
 - [TypeScript: noUncheckedIndexedAccess](https://www.typescriptlang.org/tsconfig/noUncheckedIndexedAccess.html)
 - [TypeScript: Choosing compiler options](https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/typescript). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

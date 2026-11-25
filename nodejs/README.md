@@ -96,9 +96,18 @@ No. Once the headers are sent, the status and headers cannot be replaced. Valida
 
 </details>
 
+### 11. Why might error logs refer to the wrong request in a busy Node.js service?
+
+<details>
+<summary>Show answer</summary>
+
+A mutable global request ID is shared by concurrent callbacks. Pass context explicitly or carry it with AsyncLocalStorage, and test boundaries where a library creates its own async resources.
+
+</details>
+
 ## Advanced scenarios
 
-### 11. Request p99 rises across unrelated endpoints. How do you check whether the event loop is responsible?
+### 12. Request p99 rises across unrelated endpoints. How do you check whether the event loop is responsible?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +116,7 @@ First measure event-loop delay and CPU together over the affected period. High d
 
 </details>
 
-### 12. RSS keeps growing, but V8 heap usage is flat. What do you investigate next?
+### 13. RSS keeps growing, but V8 heap usage is flat. What do you investigate next?
 
 <details>
 <summary>Show answer</summary>
@@ -116,7 +125,7 @@ RSS includes more than the JavaScript heap. Look at process.memoryUsage values f
 
 </details>
 
-### 13. Why can filesystem latency rise while event-loop delay remains low?
+### 14. Why can filesystem latency rise while event-loop delay remains low?
 
 <details>
 <summary>Show answer</summary>
@@ -125,7 +134,7 @@ Many asynchronous filesystem operations use libuv's worker pool, which they shar
 
 </details>
 
-### 14. How would you shut down a Node.js HTTP service during a rolling deploy?
+### 15. How would you shut down a Node.js HTTP service during a rolling deploy?
 
 <details>
 <summary>Show answer</summary>
@@ -134,12 +143,21 @@ On the shutdown signal, mark the instance unready, stop accepting new requests a
 
 </details>
 
-### 15. A cache keyed by request parameters grows all day. How do you test whether it is retaining memory?
+### 16. A cache keyed by request parameters grows all day. How do you test whether it is retaining memory?
 
 <details>
 <summary>Show answer</summary>
 
 Track entry count and retained heap after comparable traffic and idle periods. If both rise with unique keys, inspect what keeps the entries reachable. Use a bounded cache with an eviction policy and verify under sustained load that memory plateaus. A TTL alone does not guarantee a size bound when new keys arrive quickly.
+
+</details>
+
+### 17. Why can several independent Node.js processes report different in-memory cache contents?
+
+<details>
+<summary>Show answer</summary>
+
+Each process has its own address space. In-memory invalidation affects only the process receiving it. Decide whether bounded staleness is acceptable or use a shared cache or an explicit invalidation mechanism.
 
 </details>
 
@@ -154,4 +172,4 @@ Track entry count and retained heap after comparable traffic and idle periods. I
 - [Node.js: AbortSignal](https://nodejs.org/api/globals.html#class-abortsignal)
 - [Node.js: ECMAScript modules](https://nodejs.org/api/esm.html)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/nodejs). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

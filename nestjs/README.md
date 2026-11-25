@@ -87,9 +87,18 @@ UseExisting aliases a token to an already registered provider. UseClass tells th
 
 </details>
 
+### 10. Why might a global exception filter not affect an error caught inside a controller?
+
+<details>
+<summary>Show answer</summary>
+
+Filters handle exceptions that reach Nest exception handling. If the controller catches the exception and returns normally, there is no uncaught exception for the filter to translate.
+
+</details>
+
 ## Advanced scenarios
 
-### 10. How do you diagnose a provider dependency that Nest cannot resolve?
+### 11. How do you diagnose a provider dependency that Nest cannot resolve?
 
 <details>
 <summary>Show answer</summary>
@@ -98,7 +107,7 @@ Check the reported parameter index and token, then follow the declaring module's
 
 </details>
 
-### 11. What should you try before resolving a service cycle with forwardRef?
+### 12. What should you try before resolving a service cycle with forwardRef?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +116,7 @@ Look for a shared responsibility that belongs in a third provider or an orchestr
 
 </details>
 
-### 12. How do you test an HTTP endpoint while replacing a downstream service?
+### 13. How do you test an HTTP endpoint while replacing a downstream service?
 
 <details>
 <summary>Show answer</summary>
@@ -116,7 +125,7 @@ Build a testing module and override the same token used in production. Initializ
 
 </details>
 
-### 13. Why is a request-specific property on a default-scoped provider unsafe?
+### 14. Why is a request-specific property on a default-scoped provider unsafe?
 
 <details>
 <summary>Show answer</summary>
@@ -125,7 +134,7 @@ Default providers are normally shared across requests. Concurrent requests can o
 
 </details>
 
-### 14. How do you ensure a server shutdown closes consumers and database connections?
+### 15. How do you ensure a server shutdown closes consumers and database connections?
 
 <details>
 <summary>Show answer</summary>
@@ -134,9 +143,18 @@ Register the appropriate lifecycle hooks and enable signal-driven shutdown hooks
 
 </details>
 
+### 16. Why can a validation pipe not guarantee that an email address is unique?
+
+<details>
+<summary>Show answer</summary>
+
+Validation can check input shape, but a separate uniqueness lookup races with concurrent writes. Enforce uniqueness in storage and translate the conflict into the transport response.
+
+</details>
+
 ## Official references
 
 - [NestJS: Modules](https://docs.nestjs.com/modules)
 - [NestJS: Request lifecycle](https://docs.nestjs.com/faq/request-lifecycle)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/nestjs). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

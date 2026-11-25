@@ -96,9 +96,18 @@ Multiple workers can claim different available queue rows without waiting for on
 
 </details>
 
+### 11. When can a partial index be smaller and more useful than a full index?
+
+<details>
+<summary>Show answer</summary>
+
+Index only the rows commonly queried, such as open jobs. The planner must be able to prove that the query implies the index predicate; a generic parameterized condition may not let it do so.
+
+</details>
+
 ## Advanced scenarios
 
-### 11. How can a long-lived transaction cause table bloat?
+### 12. How can a long-lived transaction cause table bloat?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +116,7 @@ Its old snapshot can keep dead row versions potentially visible. Investigate lon
 
 </details>
 
-### 12. How do you diagnose a query that is waiting rather than using CPU?
+### 13. How do you diagnose a query that is waiting rather than using CPU?
 
 <details>
 <summary>Show answer</summary>
@@ -116,7 +125,7 @@ Inspect its wait event and blocking sessions before changing the query. A lock c
 
 </details>
 
-### 13. Why can a sequential scan be right after adding an index?
+### 14. Why can a sequential scan be right after adding an index?
 
 <details>
 <summary>Show answer</summary>
@@ -125,7 +134,7 @@ For a query reading a large fraction of a table, scanning it may be cheaper than
 
 </details>
 
-### 14. What should you test before adding an index concurrently on a busy table?
+### 15. What should you test before adding an index concurrently on a busy table?
 
 <details>
 <summary>Show answer</summary>
@@ -134,12 +143,21 @@ Check the statement's transaction restrictions, expected disk and load headroom,
 
 </details>
 
-### 15. Why might PostgreSQL benefit from extended statistics?
+### 16. Why might PostgreSQL benefit from extended statistics?
 
 <details>
 <summary>Show answer</summary>
 
 The planner can underestimate or overestimate predicates on correlated columns when it treats them independently. Extended statistics can capture some multi-column relationships, but still verify the affected query plan.
+
+</details>
+
+### 17. Why can adding requests to a busy connection pool make p99 worse?
+
+<details>
+<summary>Show answer</summary>
+
+More concurrent queries can increase lock waits, memory pressure and I/O contention. Measure time waiting for a connection separately from query time, and limit admitted work based on database capacity.
 
 </details>
 
@@ -149,4 +167,4 @@ The planner can underestimate or overestimate predicates on correlated columns w
 - [PostgreSQL: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
 - [PostgreSQL: Routine vacuuming](https://www.postgresql.org/docs/current/routine-vacuuming.html)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/postgresql). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

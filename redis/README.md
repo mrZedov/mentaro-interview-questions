@@ -87,9 +87,18 @@ Many multi-key operations require all keys to be in the same hash slot. A shared
 
 </details>
 
+### 10. Why might removing a very large Redis key increase latency for other requests?
+
+<details>
+<summary>Show answer</summary>
+
+Freeing a large value synchronously can take time on the command thread. Consider UNLINK when asynchronous reclamation is appropriate and monitor memory until reclamation completes.
+
+</details>
+
 ## Advanced scenarios
 
-### 10. What causes a hot key when total cache usage appears healthy?
+### 11. What causes a hot key when total cache usage appears healthy?
 
 <details>
 <summary>Show answer</summary>
@@ -98,7 +107,7 @@ A single popular key can overload the shard or network connection that serves it
 
 </details>
 
-### 11. Can asynchronously replicated Redis lose an acknowledged write after failover?
+### 12. Can asynchronously replicated Redis lose an acknowledged write after failover?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +116,7 @@ Yes, the promoted replica may not have received the write. When the loss is unac
 
 </details>
 
-### 12. What do you measure before increasing Redis maxmemory?
+### 13. What do you measure before increasing Redis maxmemory?
 
 <details>
 <summary>Show answer</summary>
@@ -116,12 +125,21 @@ Separate evictions, object size, fragmentation, replica buffers and process RSS.
 
 </details>
 
-### 13. How should a service behave when its Redis cache is unavailable?
+### 14. How should a service behave when its Redis cache is unavailable?
 
 <details>
 <summary>Show answer</summary>
 
 If the authoritative store can serve the request, use bounded fallback and load shedding to protect it. If Redis stores essential coordination state, fail according to that contract rather than assuming it is safe to bypass.
+
+</details>
+
+### 15. Why is INCR followed by EXPIRE not automatically a reliable counter with a lifetime?
+
+<details>
+<summary>Show answer</summary>
+
+The increment may succeed and the process may fail before setting the expiry. Use a reviewed server-side operation for conditional expiry or an atomic transaction when expiry should be set on every update. Test retries and the intended window semantics.
 
 </details>
 
@@ -131,4 +149,4 @@ If the authoritative store can serve the request, use bounded fallback and load 
 - [Redis: Persistence](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/)
 - [Redis: Key eviction](https://redis.io/docs/latest/develop/reference/eviction/)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/redis). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

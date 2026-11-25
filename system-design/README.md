@@ -96,9 +96,18 @@ Use a projection when read latency or query shape justifies the extra representa
 
 </details>
 
+### 11. How do you choose a pagination approach for a feed that changes during browsing?
+
+<details>
+<summary>Show answer</summary>
+
+Use a cursor based on a stable total ordering, including a unique tie-breaker. Decide whether browsing should preserve a snapshot or reflect live changes. Test insertions and removals between page requests.
+
+</details>
+
 ## Advanced scenarios
 
-### 11. What trades off when writes fail over between regions?
+### 12. What trades off when writes fail over between regions?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +116,7 @@ Synchronous replication can reduce loss at the cost of latency and availability 
 
 </details>
 
-### 12. How do recovery point and recovery time objectives shape backups?
+### 13. How do recovery point and recovery time objectives shape backups?
 
 <details>
 <summary>Show answer</summary>
@@ -116,7 +125,7 @@ Recovery point is tolerable data loss measured in time; recovery time is how lon
 
 </details>
 
-### 13. How does fan-out affect latency when a request waits for every dependency?
+### 14. How does fan-out affect latency when a request waits for every dependency?
 
 <details>
 <summary>Show answer</summary>
@@ -125,7 +134,7 @@ The slowest required response dominates. As fan-out grows, a rare slow dependenc
 
 </details>
 
-### 14. What is load shedding and how do you choose what to shed?
+### 15. What is load shedding and how do you choose what to shed?
 
 <details>
 <summary>Show answer</summary>
@@ -134,7 +143,7 @@ Reject or defer work before saturation makes all requests fail. Protect the chea
 
 </details>
 
-### 15. How would you prove a design can survive losing its largest node?
+### 16. How would you prove a design can survive losing its largest node?
 
 <details>
 <summary>Show answer</summary>
@@ -143,9 +152,18 @@ Check remaining headroom and run a controlled failure test under representative 
 
 </details>
 
+### 17. How would you roll back a feature after it has already written a new data format?
+
+<details>
+<summary>Show answer</summary>
+
+Keep the old version able to read transitional writes or separate the format rollout from feature enablement. If old readers cannot understand the new format, plan a forward fix or a tested conversion; disabling a flag does not undo stored data.
+
+</details>
+
 ## Official references
 
 - [Google SRE: Service level objectives](https://sre.google/sre-book/service-level-objectives/)
 - [Google SRE: Addressing cascading failures](https://sre.google/sre-book/addressing-cascading-failures/)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/system-design). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

@@ -96,9 +96,27 @@ No. Its iteration is synchronous and it discards callback return values. Await a
 
 </details>
 
+### 11. Why can an array hole behave differently from an explicit undefined?
+
+<details>
+<summary>Show answer</summary>
+
+A hole has no own element at that index. Methods such as map skip absent indices under ordinary conditions, while the array iterator reads them as undefined. Use explicit entries when consistent iteration matters.
+
+</details>
+
+### 12. When does a WeakMap help associate metadata with objects?
+
+<details>
+<summary>Show answer</summary>
+
+A WeakMap lets the metadata follow the lifetime of its object key without keeping that key alive solely through the map. It is not enumerable and does not offer predictable eviction timing or a size limit.
+
+</details>
+
 ## Advanced scenarios
 
-### 11. How do you prevent a slow autocomplete response from replacing newer results?
+### 13. How do you prevent a slow autocomplete response from replacing newer results?
 
 <details>
 <summary>Show answer</summary>
@@ -107,7 +125,7 @@ Track the latest request or generation and apply only its result. Abort prior re
 
 </details>
 
-### 12. How can an event listener cause a detached element to remain in memory?
+### 14. How can an event listener cause a detached element to remain in memory?
 
 <details>
 <summary>Show answer</summary>
@@ -116,7 +134,7 @@ A listener attached to a long-lived object can close over the element. Dispose o
 
 </details>
 
-### 13. Why is sorting state in place risky in a reactive application?
+### 15. Why is sorting state in place risky in a reactive application?
 
 <details>
 <summary>Show answer</summary>
@@ -125,7 +143,7 @@ Array.sort mutates the original array, so code sharing the reference sees unexpe
 
 </details>
 
-### 14. How would you keep a browser responsive while processing a large local dataset?
+### 16. How would you keep a browser responsive while processing a large local dataset?
 
 <details>
 <summary>Show answer</summary>
@@ -134,7 +152,7 @@ Split work into tasks that yield to rendering, or move sustained computation to 
 
 </details>
 
-### 15. How do you parse an optional user-entered count without turning a blank into zero?
+### 17. How do you parse an optional user-entered count without turning a blank into zero?
 
 <details>
 <summary>Show answer</summary>
@@ -148,4 +166,4 @@ Distinguish blank input before numeric conversion, then check the resulting numb
 - [MDN: JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 - [WHATWG: Event loops](https://html.spec.whatwg.org/multipage/webappapis.html#event-loops)
 
-Source: [Mentaro](https://www.mentaro.app/interview-questions/javascript). Original questions and answers: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
