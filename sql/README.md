@@ -11,6 +11,8 @@
 
 It emits one row for each matching pair. Three left rows and four right rows sharing a key yield twelve joined rows for that key. Verify the cardinality before aggregating.
 
+**Explanation:** If two orders match three payment rows for the same customer, joining both sets on customer ID produces six pairs. Check the intended grain and join on the key of the entity you mean to match.
+
 </details>
 
 ### 2. How does COUNT(*) differ from COUNT(column)?
@@ -39,6 +41,8 @@ GROUP BY c.id;
 <summary>Show answer</summary>
 
 Ordinary comparisons with NULL generally evaluate to unknown, and WHERE retains only true conditions. Use IS NULL to find missing values.
+
+**Explanation:** SQL conditions can be true, false or unknown; WHERE keeps only true. Use IS NULL for missingness. In PostgreSQL, IS NOT DISTINCT FROM compares two values while treating two nulls as equal.
 
 </details>
 
@@ -70,6 +74,8 @@ HAVING SUM(amount) >= 100;
 
 UNION ALL keeps every input row. UNION removes duplicate result rows across and within its inputs. Use ALL when duplicates carry meaning or are already ruled out by the inputs.
 
+**Explanation:** If shipment and pickup events carry the same date and customer, they can still be separate events. UNION drops identical projected tuples; UNION ALL preserves them and avoids a duplicate-elimination step.
+
 </details>
 
 ## Applied
@@ -81,6 +87,17 @@ UNION ALL keeps every input row. UNION removes duplicate result rows across and 
 
 Put the paid-order condition in the join's ON clause. A WHERE predicate requiring a paid status rejects the null-extended rows and loses customers with no match.
 
+**Explanation:** Filtering the right table in WHERE discards the null-extended row. Put the criterion in ON if customers without qualifying orders must survive.
+
+**Example:**
+
+```sql
+SELECT c.id, o.id AS paid_order
+FROM customers AS c
+LEFT JOIN orders AS o
+  ON o.customer_id = c.id AND o.status = 'paid';
+```
+
 </details>
 
 ### 7. What can go wrong with NOT IN when the subquery returns NULL?
@@ -89,6 +106,8 @@ Put the paid-order condition in the join's ON clause. A WHERE predicate requirin
 <summary>Show answer</summary>
 
 A non-matching row may evaluate to unknown rather than true because of the NULL in the list. A correlated NOT EXISTS expresses the anti-join directly; decide explicitly how null keys should be treated.
+
+**Explanation:** A NULL in the subquery can turn every nonmatching comparison into unknown. NOT EXISTS normally expresses the intended anti-join; decide separately whether a NULL on the outer side should qualify.
 
 </details>
 
@@ -99,6 +118,8 @@ A non-matching row may evaluate to unknown rather than true because of the NULL 
 
 Use a window function when you need to retain detail rows and also calculate values over a partition. GROUP BY collapses rows to one result per group.
 
+**Explanation:** A window can attach each customer total to every order while keeping individual order rows available for display. A grouped query changes the result grain to one row per customer.
+
 </details>
 
 ### 9. How do ROW_NUMBER, RANK and DENSE_RANK treat ties?
@@ -107,6 +128,8 @@ Use a window function when you need to retain detail rows and also calculate val
 <summary>Show answer</summary>
 
 ROW_NUMBER assigns distinct positions. RANK gives ties the same position and leaves gaps; DENSE_RANK gives ties the same position without gaps. Use an explicit tie-breaker when row selection must be deterministic.
+
+**Explanation:** For scores 100, 100, 90, RANK yields 1, 1, 3 and DENSE_RANK yields 1, 1, 2. ROW_NUMBER assigns three distinct positions; add a unique tie-breaker if equal scores need predictable order.
 
 </details>
 
@@ -117,6 +140,8 @@ ROW_NUMBER assigns distinct positions. RANK gives ties the same position and lea
 
 The default ordered window frame in many systems includes peers with equal ordering values. Use an explicit ROWS frame and a unique ordering when you intend one step per row.
 
+**Explanation:** With a peer-aware frame, both rows at a shared timestamp can receive the same cumulative value. Use a stable tie-breaker and an explicit ROWS frame when you need one step per transaction.
+
 </details>
 
 ### 11. How do you return one latest row per customer when two rows have the same timestamp?
@@ -126,6 +151,8 @@ The default ordered window frame in many systems includes peers with equal order
 
 Rank rows in each customer partition by descending timestamp and a stable unique tie-breaker, then select rank one. Without a tie-breaker, row selection may change between executions.
 
+**Explanation:** Use the same comparison direction for the secondary key as intended by the business rule. Duplicated timestamps alone cannot determine recency, so document whether a larger ID is a meaningful tie-breaker or merely a deterministic one.
+
 </details>
 
 ### 12. When is EXISTS clearer than joining a table and removing duplicates?
@@ -134,6 +161,8 @@ Rank rows in each customer partition by descending timestamp and a stable unique
 <summary>Show answer</summary>
 
 Use EXISTS when the condition is whether at least one related row qualifies. It avoids multiplying outer rows and expresses intent directly. Use a join when you actually need columns from matching rows.
+
+**Explanation:** A semi-join asks whether a match exists without selecting a matching row. It keeps each outer row once even when several matches qualify; it does not deduplicate duplicates that already exist in the outer input.
 
 </details>
 
@@ -146,6 +175,8 @@ Use EXISTS when the condition is whether at least one related row qualifies. It 
 
 Multiple rows on each child side multiply matches per order. Aggregate each child to the order grain first, then join the two summaries before calculating the total.
 
+**Explanation:** Two line items and three payments produce six joined rows before aggregation. Sum each child table at order grain first, then join the totals; SUM(DISTINCT amount) would wrongly collapse separate payments of equal size.
+
 </details>
 
 ### 14. How can applying a function to a timestamp make filtering slower?
@@ -154,6 +185,8 @@ Multiple rows on each child side multiply matches per order. Aggregate each chil
 <summary>Show answer</summary>
 
 A predicate on a transformed column may not use a normal index on the column. Prefer a half-open range on the original timestamp, or use an appropriate expression index if the engine supports it.
+
+**Explanation:** Instead of extracting a date from every indexed timestamp, calculate the start and end of the desired day once and query a half-open range. For civil dates, compute both boundaries in the user’s timezone to handle daylight-saving transitions.
 
 </details>
 
@@ -164,6 +197,8 @@ A predicate on a transformed column may not use a normal index on the column. Pr
 
 Consider an index starting with account ID and then the ordering key and tie-breaker. Verify with the actual plan and realistic account sizes; indexes also cost storage and write work.
 
+**Explanation:** An index starting with account ID can narrow the scan to one account, then return timestamps in index order. Add the ordered tie-breaker if the endpoint uses it for pagination and verify the actual plan with a realistic tenant.
+
 </details>
 
 ### 16. How do you claim a limited unit without overselling under concurrency?
@@ -173,6 +208,18 @@ Consider an index starting with account ID and then the ordering key and tie-bre
 
 Avoid a separate unchecked read followed by a write. Use an atomic conditional update or an appropriate lock inside a transaction, and treat no affected row as an unsuccessful claim.
 
+**Explanation:** Make the condition and update one database operation; a prior availability read does not prevent another transaction changing the count.
+
+**Example:**
+
+```sql
+UPDATE inventory
+SET available = available - 1
+WHERE id = 7 AND available > 0;
+```
+
+A zero affected-row count means no unit was claimed.
+
 </details>
 
 ### 17. Why might adding DISTINCT hide a data bug?
@@ -181,6 +228,8 @@ Avoid a separate unchecked read followed by a write. Use an atomic conditional u
 <summary>Show answer</summary>
 
 It discards equal output rows but does not fix a bad join or incorrect business grain. Compare keys and expected multiplicity before deduplicating, especially when sums or counts are involved.
+
+**Explanation:** If duplicates disappear under DISTINCT, remove it temporarily and count matches per expected key. That usually reveals whether you joined on a nonunique column or selected at the wrong grain.
 
 </details>
 

@@ -11,6 +11,8 @@
 
 Rendering calls components to compute UI. Committing applies the resulting changes to the host, such as the browser DOM. A render can be discarded, so it must not have observable side effects.
 
+**Explanation:** Calling a component computes the next UI description; React may discard that work without changing the DOM. Keep rendering pure because a render is not a reliable signal that the user saw a change.
+
 </details>
 
 ### 2. Why can two setCount(count + 1) calls increment only once?
@@ -40,6 +42,8 @@ function incrementTwice(setCount) {
 
 Use a stable identity from the data, unique among siblings. A positional key can attach the previous row's local state to a different item when rows move.
 
+**Explanation:** With index keys, inserting a row at the top can move an input’s draft to the next record. Use an ID stable across edits and reordering. A freshly generated key on every render resets state instead of preserving it.
+
 </details>
 
 ### 4. What does it mean for an input to be controlled?
@@ -49,6 +53,8 @@ Use a stable identity from the data, unique among siblings. A positional key can
 
 React state or props supply its current value and an onChange handler updates the source of truth. An uncontrolled input keeps its current value in the DOM and can start with defaultValue.
 
+**Explanation:** A controlled input displays the value provided by React state, so the change handler must update that value. Initialize consistently: switching between undefined and a string can switch the control mode and trigger warnings.
+
 </details>
 
 ### 5. When should state be lifted to a common parent?
@@ -57,6 +63,8 @@ React state or props supply its current value and an onChange handler updates th
 <summary>Show answer</summary>
 
 Lift it when multiple children need to coordinate through one authoritative value. Keep purely local state near its owner instead of making every update flow through a distant component.
+
+**Explanation:** Two sibling controls that must agree should share a state owner. Keeping two copies and synchronizing them through effects introduces drift and extra updates; lift only the shared state, not unrelated local UI details.
 
 </details>
 
@@ -69,6 +77,8 @@ Lift it when multiple children need to coordinate through one authoritative valu
 
 If the list is a pure function of input props and state, compute it during render. An effect that writes derived state adds an update and can briefly show stale data.
 
+**Explanation:** A filtered list is a deterministic view of inputs. Storing it separately and updating it in an effect can commit a stale intermediate render whenever the search term changes. Derive it during render and optimize only if measurement warrants it.
+
 </details>
 
 ### 7. How do you avoid leaking subscriptions when an effect dependency changes?
@@ -77,6 +87,8 @@ If the list is a pure function of input props and state, compute it during rende
 <summary>Show answer</summary>
 
 Return cleanup from the effect to unsubscribe the exact listener it registered. React runs cleanup before the next setup for changed dependencies and when removing the component.
+
+**Explanation:** Close over the exact connection created by each setup, then dispose that connection when dependencies change. Test changing the selected channel without unmounting, because cleanup must run on replacement too.
 
 </details>
 
@@ -87,6 +99,8 @@ Return cleanup from the effect to unsubscribe the exact listener it registered. 
 
 Use a ref for a value that survives renders but does not determine the rendered output, such as a timeout handle. Updating a ref does not schedule a render.
 
+**Explanation:** A timer ID should normally survive renders without triggering another one, so a ref fits. A count displayed on screen needs state. Updating a ref does not ask React to render the new value.
+
 </details>
 
 ### 9. What causes an effect to reconnect on every render?
@@ -95,6 +109,8 @@ Use a ref for a value that survives renders but does not determine the rendered 
 <summary>Show answer</summary>
 
 A dependency may be a fresh object or function each time. Move construction inside the effect or depend on the primitive inputs that determine the connection; do not omit a real dependency.
+
+**Explanation:** An object created during every render has a different identity, even if it contains the same fields. Construct configuration inside the effect if only the effect needs it, and depend on the meaningful primitives.
 
 </details>
 
@@ -105,6 +121,8 @@ A dependency may be a fresh object or function each time. Move construction insi
 
 If the account defines a distinct form instance, key the form by account ID. React then creates new state instead of momentarily retaining the prior form's edits.
 
+**Explanation:** Key the form by account ID when all local drafts should reset. If some fields must survive switching accounts, store them at the appropriate owner instead of remounting unrelated components.
+
 </details>
 
 ### 11. When is a reducer useful for a component with several related state variables?
@@ -113,6 +131,8 @@ If the account defines a distinct form instance, key the form by account ID. Rea
 <summary>Show answer</summary>
 
 A reducer groups state transitions around explicit actions. It can make coupled updates testable without rendering and prevent combinations the UI should not represent. It does not move side effects into the reducer.
+
+**Explanation:** Model a transition such as checkout success in one reducer action so status and receipt cannot drift apart. Trigger network effects outside that reducer and pass the result back as a second action.
 
 </details>
 
@@ -125,6 +145,8 @@ A reducer groups state transitions around explicit actions. It can make coupled 
 
 It tests whether setup can be undone cleanly. Fix missing cleanup or impure work; the development-only check is not a reason to add an ad hoc run-once flag.
 
+**Explanation:** Development setup → cleanup → setup helps expose subscriptions that cannot be safely restarted. Fix the resource lifecycle instead of using a ref to suppress the second setup, which hides the same problem on real remounts.
+
 </details>
 
 ### 13. Why might memoizing a child fail to reduce its renders?
@@ -133,6 +155,8 @@ It tests whether setup can be undone cleanly. Fix missing cleanup or impure work
 <summary>Show answer</summary>
 
 Fresh object or callback props can defeat shallow comparison, and the child's own state or context can still trigger rendering. Profile the component before adding memoization.
+
+**Explanation:** A fresh object or callback can make a memoized child receive different props each render. Check the profiler first: memoization is not a useful fix if the child is already cheap or updates because of its own state or context.
 
 </details>
 
@@ -143,6 +167,8 @@ Fresh object or callback props can defeat shallow comparison, and the child's ow
 
 Abort previous requests where possible and ignore outcomes from outdated effects or request generations. Handle errors for the current request separately from expected cancellation.
 
+**Explanation:** An old response can arrive after a new query has already settled. Use cleanup or a generation check on result, error and loading updates. Cancel the transport where possible, but do not rely on cancellation alone.
+
 </details>
 
 ### 15. What does an error boundary not catch by default?
@@ -151,6 +177,8 @@ Abort previous requests where possible and ignore outcomes from outdated effects
 <summary>Show answer</summary>
 
 It handles rendering failures in descendants, not arbitrary event-handler errors or rejected promises in asynchronous callbacks. Handle those failures at their own boundaries.
+
+**Explanation:** Handle failures in interaction callbacks and asynchronous work at the appropriate boundary. An error boundary is useful for failed rendering of descendants; it is not a global application error handler.
 
 </details>
 
@@ -161,6 +189,8 @@ It handles rendering failures in descendants, not arbitrary event-handler errors
 
 The initial server HTML and initial client render may use different times or locales. Render shared deterministic data first, then update client-specific values after hydration.
 
+**Explanation:** The first client render must agree with the server HTML. Use the timestamp or locale serialized with the page for that first render, then update after hydration if the browser needs a different value.
+
 </details>
 
 ### 17. Why can updating a widely used context from high-frequency input make typing slow?
@@ -169,6 +199,8 @@ The initial server HTML and initial client render may use different times or loc
 <summary>Show answer</summary>
 
 Consumers that read the context rerender when its value changes. Profile the affected tree, keep rapidly changing state near its consumers, and split independent context values when appropriate.
+
+**Explanation:** Context updates follow consumers, not just immediate children. Profile which consumers rerender as keys are typed, and move high-frequency input state closer to the field rather than memoizing every affected display.
 
 </details>
 

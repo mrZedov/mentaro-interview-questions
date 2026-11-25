@@ -32,6 +32,19 @@ An element with both id and class set to status is green despite the ID selector
 
 The declared width or height includes padding and border, but not margin. With content-box, padding and border are added outside the declared content size.
 
+**Explanation:** With a width of 200px, padding of 16px per side and a border of 2px per side, the content is 164px wide under border-box. Margins still affect the space the box takes in its parent.
+
+**Example:**
+
+```css
+.panel {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 16px;
+  border: 2px solid;
+}
+```
+
 </details>
 
 ## Applied
@@ -43,6 +56,20 @@ The declared width or height includes padding and border, but not margin. With c
 
 The automatic minimum size can prevent the flex item from shrinking below its content. Allow shrinkage with min-width: 0 where appropriate and decide whether to wrap or truncate the label.
 
+**Explanation:** In a horizontal flex row, an unbroken label can have a min-content width larger than the available space. Apply the minimum override to the flex item itself; applying ellipsis only to a descendant may not allow the item to shrink.
+
+**Example:**
+
+```css
+.row { display: flex; }
+.label {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+```
+
 </details>
 
 ### 4. When is a container query better than a media query?
@@ -51,6 +78,17 @@ The automatic minimum size can prevent the flex item from shrinking below its co
 <summary>Show answer</summary>
 
 Use a container query when a component should adapt to the space allocated by its parent. Use a media query when the decision depends on the viewport or a user preference.
+
+**Explanation:** A product card can be narrow in a sidebar and wide in the main grid at the same viewport size. Put the containment context on an ancestor of the element you want to style, and switch the card layout when that ancestor has enough space.
+
+**Example:**
+
+```css
+.slot { container-type: inline-size; }
+@container (width >= 30rem) {
+  .card { display: grid; grid-template-columns: 1fr 2fr; }
+}
+```
 
 </details>
 
@@ -63,6 +101,8 @@ Use a container query when a component should adapt to the space allocated by it
 
 Inspect stacking contexts created by ancestors. A child cannot escape its context just by increasing z-index. Use an appropriate top-layer primitive or restructure where the modal is mounted.
 
+**Explanation:** In DevTools, walk up both ancestor chains and look for properties such as transform or opacity that create contexts. Distinguish stacking from clipping: moving an element above its siblings will not fix overflow clipping. A modal dialog opened with showModal uses the top layer.
+
 </details>
 
 ### 6. How would you diagnose visible layout shifts when web fonts load?
@@ -71,6 +111,8 @@ Inspect stacking contexts created by ancestors. A child cannot escape its contex
 <summary>Show answer</summary>
 
 Record the layout shifts and identify their affected elements. Compare fallback and final font metrics, reserve predictable geometry and choose loading behavior that fits the content.
+
+**Explanation:** Throttle the font request and compare the text before and after the swap. A fallback with a different width can change line breaks and move everything below it. A closer fallback or font metric overrides can reduce movement; font-display alone does not make the two fonts occupy the same space.
 
 </details>
 

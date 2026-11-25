@@ -31,6 +31,20 @@ console.log(settings.ui.zoom); // 2
 
 It captures this from the surrounding scope. Calling it as an object property or using call does not give it a new receiver, unlike an ordinary unbound method.
 
+**Explanation:** An arrow created inside an ordinary method can use that method’s receiver later. An arrow placed directly in an object literal does not learn the receiver from the property access.
+
+**Example:**
+
+```javascript
+const counter = {
+  value: 7,
+  reader() { return () => this.value; },
+};
+console.log(counter.reader()());
+```
+
+The result is 7.
+
 </details>
 
 ### 3. What does a closure retain after its outer function returns?
@@ -39,6 +53,22 @@ It captures this from the surrounding scope. Calling it as an object property or
 <summary>Show answer</summary>
 
 It retains access to captured lexical bindings. It is not necessarily a snapshot of their values, so later changes to a shared binding can be visible.
+
+**Explanation:** A lexical binding is the storage location the closure reads. Two callbacks created by the same invocation can update and read one shared variable, while separate invocations create independent variables.
+
+**Example:**
+
+```javascript
+function makeCounter() {
+  let count = 0;
+  return () => ++count;
+}
+const a = makeCounter();
+const b = makeCounter();
+console.log(a(), a(), b());
+```
+
+The result is 1 2 1.
 
 </details>
 
@@ -68,6 +98,8 @@ console.log(retries || 3); // 3
 
 Object equality by === compares identity. Compare the numeric timestamps when the intent is to compare instants.
 
+**Explanation:** Choose the comparison based on meaning: getTime compares instants, while comparing a calendar date requires a timezone or date-only representation. Invalid dates produce NaN from getTime, so validate before treating the result as a timestamp.
+
 </details>
 
 ## Applied
@@ -79,6 +111,8 @@ Object equality by === compares identity. Compare the numeric timestamps when th
 
 An ordinary function's this depends on how it is called. Extracting obj.method and invoking it separately loses the object receiver; bind it or call it through a wrapper.
 
+**Explanation:** The receiver comes from the call expression, not from where the function was declared. A wrapper can defer the property lookup to invocation time; bind fixes the function and receiver at binding time. This difference matters if a method can be replaced.
+
 </details>
 
 ### 7. Does object spread make a deep copy?
@@ -87,6 +121,16 @@ An ordinary function's this depends on how it is called. Extracting obj.method a
 <summary>Show answer</summary>
 
 No. It copies own enumerable properties into a new outer object, but nested object values still refer to the same objects. Copy the nested paths you intend to change.
+
+**Explanation:** Copy the path you intend to mutate and reuse untouched branches when they can remain immutable. Object spread also does not preserve the source prototype, so spreading a class instance is not a general-purpose cloning method.
+
+**Example:**
+
+```javascript
+const before = { preferences: { zoom: 1 } };
+const after = { ...before, preferences: { ...before.preferences, zoom: 2 } };
+console.log(before.preferences.zoom, after.preferences.zoom);
+```
 
 </details>
 
@@ -97,6 +141,18 @@ No. It copies own enumerable properties into a new outer object, but nested obje
 
 The browser drains microtasks at the checkpoint before moving on to another task. A timer callback is a separate task, even with zero delay.
 
+**Explanation:** A microtask queued by another microtask can run in the same checkpoint. Repeating this indefinitely delays timers and opportunities to paint; Promise.resolve does not create a chance for the browser to render.
+
+**Example:**
+
+```javascript
+console.log("current");
+setTimeout(() => console.log("timer"), 0);
+queueMicrotask(() => console.log("microtask"));
+```
+
+In a browser, the output is current, microtask, timer.
+
 </details>
 
 ### 9. What happens if a callback passed to then throws?
@@ -105,6 +161,16 @@ The browser drains microtasks at the checkpoint before moving on to another task
 <summary>Show answer</summary>
 
 The promise returned by that then call rejects with the thrown error. Return or await the chain so the consumer can observe the failure.
+
+**Explanation:** The original promise may already be fulfilled. Attach error handling to the promise returned by then, not just the original promise, if you want to observe failures in the transformation.
+
+**Example:**
+
+```javascript
+await Promise.resolve("data")
+  .then(() => { throw new Error("invalid"); })
+  .catch(error => console.log(error.message));
+```
 
 </details>
 
@@ -140,6 +206,17 @@ console.log(completed); // [1, 2]
 
 A hole has no own element at that index. Methods such as map skip absent indices under ordinary conditions, while the array iterator reads them as undefined. Use explicit entries when consistent iteration matters.
 
+**Explanation:** A property-presence test can distinguish a hole from an explicit undefined element. Spread iterates the source and fills holes with explicit undefined; map on an ordinary sparse array preserves the holes.
+
+**Example:**
+
+```javascript
+const sparse = Array(1);
+console.log(0 in sparse, 0 in [...sparse]);
+```
+
+The result is false true.
+
 </details>
 
 ### 12. When does a WeakMap help associate metadata with objects?
@@ -148,6 +225,8 @@ A hole has no own element at that index. Methods such as map skip absent indices
 <summary>Show answer</summary>
 
 A WeakMap lets the metadata follow the lifetime of its object key without keeping that key alive solely through the map. It is not enumerable and does not offer predictable eviction timing or a size limit.
+
+**Explanation:** Useful metadata might be a memoized measurement for a DOM element. If the task instead requires listing all entries, deterministic eviction or bulk invalidation, use a different structure rather than treating garbage collection as a cache policy.
 
 </details>
 
@@ -160,6 +239,8 @@ A WeakMap lets the metadata follow the lifetime of its object key without keepin
 
 Track the latest request or generation and apply only its result. Abort prior requests where possible, but retain the generation check because cancellation can race with a response.
 
+**Explanation:** Decide whether to apply all state changes, not just the success result. An obsolete request can also clear the loading indicator or replace a new result with an error. Check the generation at each publication point; cancellation is an optimization.
+
 </details>
 
 ### 14. How can an event listener cause a detached element to remain in memory?
@@ -168,6 +249,8 @@ Track the latest request or generation and apply only its result. Abort prior re
 <summary>Show answer</summary>
 
 A listener attached to a long-lived object can close over the element. Dispose of the listener when the component unmounts and inspect the heap's retaining paths to confirm the leak.
+
+**Explanation:** Removing a node is not enough if a callback registered on window keeps it reachable. An AbortController is one way to tie the subscription lifetime to a component; inspect a heap snapshot to see whether that listener is the actual retaining path.
 
 </details>
 
@@ -178,6 +261,8 @@ A listener attached to a long-lived object can close over the element. Dispose o
 
 Array.sort mutates the original array, so code sharing the reference sees unexpected changes. Return a new array when deriving a sorted view, using toSorted where supported.
 
+**Explanation:** A shared reference can make a memoized component miss an update or make another view see unexpectedly reordered data. Copy before sorting if toSorted is unavailable. Neither version clones the element objects.
+
 </details>
 
 ### 16. How would you keep a browser responsive while processing a large local dataset?
@@ -187,6 +272,8 @@ Array.sort mutates the original array, so code sharing the reference sees unexpe
 
 Split work into tasks that yield to rendering, or move sustained computation to a worker. Consider serialization and memory costs, and measure long tasks rather than assuming smaller chunks are enough.
 
+**Explanation:** Start by measuring long tasks and identifying CPU versus parsing and rendering cost. A worker can isolate CPU work, but copying a large payload can itself take time; consider transferable buffers where ownership can move. For main-thread chunking, yield to a task rather than only to a microtask.
+
 </details>
 
 ### 17. How do you parse an optional user-entered count without turning a blank into zero?
@@ -195,6 +282,21 @@ Split work into tasks that yield to rendering, or move sustained computation to 
 <summary>Show answer</summary>
 
 Distinguish blank input before numeric conversion, then check the resulting number is finite and an integer within range. A coercion result alone cannot tell you what the user intended.
+
+**Explanation:** Define the accepted grammar before converting. Number accepts whitespace and forms such as hexadecimal; parseInt can accept a prefix and silently ignore trailing text. For a decimal count, check the text and the safe integer range.
+
+**Example:**
+
+```javascript
+function optionalCount(text) {
+  const value = text.trim();
+  if (value === "") return undefined;
+  if (!/^\d+$/.test(value)) throw new Error("Expected decimal digits");
+  const count = Number(value);
+  if (!Number.isSafeInteger(count)) throw new RangeError("Count is too large");
+  return count;
+}
+```
 
 </details>
 
