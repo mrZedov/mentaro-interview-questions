@@ -1,6 +1,6 @@
 # Java interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/java) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/java) · [Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ## Foundations
 
@@ -25,6 +25,8 @@ System.out.println(users.get(new UserId(7))); // Ada
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 2. When would ArrayList be preferable to LinkedList?
 
 <details>
@@ -35,6 +37,8 @@ ArrayList supports fast indexed access and good locality. LinkedList only makes 
 **Explanation:** Indexing an ArrayList gets the element directly, while a LinkedList may have to traverse many nodes. Even for insertion, a linked list helps only when the position is already available cheaply; locality often favors an array-backed list.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ### 3. Why is List&lt;Integer&gt; not assignable to List&lt;Number&gt;?
 
@@ -47,6 +51,8 @@ If it were, the recipient could insert a Double into a list meant only for integ
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 4. What is the practical difference between checked and unchecked exceptions?
 
 <details>
@@ -58,6 +64,8 @@ A checked exception must be caught or declared by callers at compile time. Unche
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 5. Does final make a Java object immutable?
 
 <details>
@@ -68,6 +76,8 @@ A final reference cannot be assigned again, but the object may still mutate. Imm
 **Explanation:** A final variable cannot be reassigned, but a final List can still be mutated. For an immutable object, also control access to its mutable components and avoid handing out references that let callers change its state.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ## Applied
 
@@ -82,6 +92,8 @@ It establishes visibility and ordering for accesses, not atomicity of the read-m
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 7. Is get followed by put an atomic operation on ConcurrentHashMap?
 
 <details>
@@ -92,6 +104,8 @@ No. Another thread can act between the calls. Use operations such as putIfAbsent
 **Explanation:** Both get and put can be individually thread-safe while the sequence still races. Use a compound operation such as putIfAbsent when that is the intended change. Avoid putting long-running side effects in mapping operations.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ### 8. What does try-with-resources guarantee when closing also throws?
 
@@ -104,6 +118,8 @@ It closes initialized resources in reverse order. If the body already threw, clo
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 9. Why should shared mutable state be avoided in a parallel stream?
 
 <details>
@@ -114,6 +130,8 @@ Pipeline operations may run concurrently and in a different order than expected.
 **Explanation:** Parallel execution can interleave independent element operations. Let a collector handle accumulation according to its contract, or keep the stream sequential if the business operation relies on ordered mutation of shared state.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ### 10. What does thenCompose do differently from thenApply?
 
@@ -126,6 +144,8 @@ ThenApply maps a successful result to a new value. When the mapping starts anoth
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 11. Why is a mutable object a risky HashMap key?
 
 <details>
@@ -136,6 +156,8 @@ If fields involved in equals or hashCode change after insertion, lookups can has
 **Explanation:** If the fields used by hashCode change after insertion, a later lookup can start in another bucket. Treat map keys as stable identifiers; a mutable business entity can be the value rather than the key.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ## Advanced scenarios
 
@@ -150,6 +172,8 @@ Compare live memory after equivalent workloads and collections. Inspect retained
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 13. Why can an unbounded executor queue cause high latency without high CPU?
 
 <details>
@@ -160,6 +184,8 @@ Tasks may wait behind blocked workers while the queue grows. Measure queue age a
 **Explanation:** A request may spend most of its latency sitting in the queue, especially when workers are occupied by slow I/O. Measure queue age, cap waiting work and define what rejection or backpressure looks like before tuning thread count.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ### 14. Do virtual threads remove the need to limit database concurrency?
 
@@ -172,6 +198,8 @@ No. They reduce the cost of many blocked Java tasks, not the database's capacity
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 15. How do you distinguish lock contention from a CPU bottleneck?
 
 <details>
@@ -180,6 +208,8 @@ No. They reduce the cost of many blocked Java tasks, not the database's capacity
 Sample thread states and use profiling or Flight Recorder. Many blocked threads with a hot monitor point to contention; high CPU with runnable stacks points toward computation or spin.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ### 16. What should a service do when interrupted while blocking?
 
@@ -190,6 +220,8 @@ Propagate InterruptedException when the contract allows it. If translating it, t
 
 </details>
 
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
+
 ### 17. How can you cap the time a Java request waits on several concurrent operations?
 
 <details>
@@ -198,6 +230,8 @@ Propagate InterruptedException when the contract allows it. If translating it, t
 Calculate one deadline from a monotonic time source and give each wait only the remaining budget. Decide what to cancel or ignore after timeout; timing out while waiting for a Future does not by itself stop the task.
 
 </details>
+
+[Try the Java practice demo](https://www.mentaro.app/demo?topic=java&utm_source=github)
 
 ## Official references
 

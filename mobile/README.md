@@ -1,6 +1,6 @@
 # Mobile engineering interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ An interface can be connected while the server, DNS or authentication fails. Tre
 
 </details>
 
+[Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
+
 ### 2. What is the distinction between an offline cache and the local source of truth?
 
 <details>
@@ -23,6 +25,8 @@ An interface can be connected while the server, DNS or authentication fails. Tre
 An offline cache is a possibly stale copy. A local source of truth defines what the UI reads and writes while sync reconciles it with the server. Specify freshness and conflicts explicitly.
 
 </details>
+
+[Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ Persist or reconstruct the durable inputs, such as the item ID and filters. Recr
 
 </details>
 
+[Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
+
 ### 4. How do you design a push notification tap for a signed-out user?
 
 <details>
@@ -43,6 +49,8 @@ Persist or reconstruct the durable inputs, such as the item ID and filters. Recr
 Resolve the destination without assuming a live session. Authenticate if needed, then revalidate access and handle missing content. Do not put private content or credentials in the deep-link URL.
 
 </details>
+
+[Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Store a stable record ID and enough version context to detect conflicts. Pick a 
 
 </details>
 
+[Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
+
 ### 6. How can you detect a startup regression that affects only low-end devices?
 
 <details>
@@ -63,6 +73,8 @@ Store a stable record ID and enough version context to detect conflicts. Pick a 
 Measure cold-start milestones by device class and release, then reproduce on representative hardware. Separate first-frame time from interactive readiness and inspect initialization on the critical path.
 
 </details>
+
+[Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
 
 ## Official references
 

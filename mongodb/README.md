@@ -1,6 +1,6 @@
 # MongoDB interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/mongodb) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/mongodb) · [Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ## Foundations
 
@@ -13,6 +13,8 @@ Embed bounded data read and updated with its parent. Reference independently acc
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 2. Does MongoDB's flexible schema prevent validation?
 
 <details>
@@ -21,6 +23,8 @@ Embed bounded data read and updated with its parent. Reference independently acc
 No. A collection validator can reject documents that do not meet required shapes or types. Plan how existing documents will be migrated before tightening validation.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ### 3. What does a single-document atomic update guarantee?
 
@@ -47,6 +51,8 @@ Pass a MongoDB driver Collection and the ID of an existing inventory item. With 
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 4. What happens if you index a field containing arrays?
 
 <details>
@@ -56,6 +62,8 @@ MongoDB can build a multikey index with entries from the array. Check compound i
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 5. Why can a query using { field: null } return documents without that field?
 
 <details>
@@ -64,6 +72,8 @@ MongoDB can build a multikey index with entries from the array. Check compound i
 The condition matches both explicit null and missing fields. Use an existence or type predicate when the distinction matters.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ## Applied
 
@@ -76,6 +86,8 @@ Place common equality fields first. Decide whether supporting the sort or using 
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 7. Why is it useful to move a selective $match early in an aggregation?
 
 <details>
@@ -84,6 +96,8 @@ Place common equality fields first. Decide whether supporting the sort or using 
 It reduces the rows downstream stages need to process and can allow indexed access near the start. Review the optimized plan; a filter depending on derived fields cannot run before those fields exist.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ### 8. How can $unwind alter an aggregation's result count?
 
@@ -94,6 +108,8 @@ It emits one result per array element and normally omits null, missing or empty 
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 9. How would you paginate an activity feed with duplicate timestamps?
 
 <details>
@@ -102,6 +118,8 @@ It emits one result per array element and normally omits null, missing or empty 
 Order on timestamp and a unique tie-breaker, and apply a matching range predicate for the next page. Match the compound index to the filtering and sort order.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ### 10. When would you use a partial index?
 
@@ -112,6 +130,8 @@ Use it when an important query consistently targets a defined subset, such as ac
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 11. How do you prevent lost updates when concurrent requests edit the same MongoDB document?
 
 <details>
@@ -120,6 +140,8 @@ Use it when an important query consistently targets a defined subset, such as ac
 Filter the update by a version or the expected prior value and update it atomically. If no document matches, handle the conflict instead of silently replacing newer data.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ## Advanced scenarios
 
@@ -132,6 +154,8 @@ The query may examine many candidates before filtering. Inspect its execution pl
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 13. What does majority write concern address after a primary failure?
 
 <details>
@@ -140,6 +164,8 @@ The query may examine many candidates before filtering. Inspect its execution pl
 It asks for acknowledgement from the required majority according to the deployment's rules. It reduces rollback exposure compared with primary-only acknowledgement but does not choose the read consistency of a later request.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ### 14. Why can a shard key based on increasing timestamps create uneven write load?
 
@@ -150,6 +176,8 @@ New writes may concentrate in the current range even when historical data is bal
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 15. Why avoid transactions for every multi-document read or write?
 
 <details>
@@ -158,6 +186,8 @@ New writes may concentrate in the current range even when historical data is bal
 Transactions provide guarantees when an invariant spans documents, but can add contention and cost. First consider whether the invariant can live in one document, or whether an asynchronous projection is sufficient.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ### 16. How would you change a document field without breaking rolling deployments?
 
@@ -168,6 +198,8 @@ Deploy readers that handle both forms, then update writers and backfill in bound
 
 </details>
 
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
+
 ### 17. Why can a collection with a suitable index still have high write latency?
 
 <details>
@@ -176,6 +208,8 @@ Deploy readers that handle both forms, then update writers and backfill in bound
 Writes must maintain indexes and may wait for the configured write concern. Inspect write workload, storage latency and replication behavior rather than assuming read-plan improvements solve writes.
 
 </details>
+
+[Try the MongoDB practice demo](https://www.mentaro.app/demo?topic=mongodb&utm_source=github)
 
 ## Official references
 

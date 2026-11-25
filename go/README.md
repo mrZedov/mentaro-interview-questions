@@ -1,6 +1,6 @@
 # Go interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Go practice demo](https://www.mentaro.app/demo?topic=go&utm_source=github)
 
 ## Foundations
 
@@ -35,6 +35,8 @@ The program prints true false.
 
 </details>
 
+[Try the Go practice demo](https://www.mentaro.app/demo?topic=go&utm_source=github)
+
 ### 2. How are a Go slice and array different when passed to a function?
 
 <details>
@@ -43,6 +45,8 @@ The program prints true false.
 An array is copied as a value. A slice header is copied but can still point to the same backing array, so modifying shared elements can change what the caller sees.
 
 </details>
+
+[Try the Go practice demo](https://www.mentaro.app/demo?topic=go&utm_source=github)
 
 ## Applied
 
@@ -55,6 +59,8 @@ Propagate cancellation with context and select between sending the result and ca
 
 </details>
 
+[Try the Go practice demo](https://www.mentaro.app/demo?topic=go&utm_source=github)
+
 ### 4. Who should close a channel with multiple Go producers?
 
 <details>
@@ -63,6 +69,8 @@ Propagate cancellation with context and select between sending the result and ca
 Use a coordinator that knows all sends have finished, for example after waiting for every producer. A receiver generally cannot prove that a sender will not send after closure.
 
 </details>
+
+[Try the Go practice demo](https://www.mentaro.app/demo?topic=go&utm_source=github)
 
 ## Advanced scenarios
 
@@ -75,6 +83,8 @@ Compare goroutine count and stack profiles before and after similar loads. Persi
 
 </details>
 
+[Try the Go practice demo](https://www.mentaro.app/demo?topic=go&utm_source=github)
+
 ### 6. What does a clean Go race-detector run establish?
 
 <details>
@@ -83,6 +93,8 @@ Compare goroutine count and stack profiles before and after similar loads. Persi
 It did not report a race on the executed paths. It is not proof of race freedom on unexecuted paths or under untested workloads. Include concurrent tests and still reason about ownership and synchronization.
 
 </details>
+
+[Try the Go practice demo](https://www.mentaro.app/demo?topic=go&utm_source=github)
 
 ## Official references
 

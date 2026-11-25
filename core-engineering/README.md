@@ -1,6 +1,6 @@
 # Core software engineering interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ An invariant describes what must hold before and after operations. For a heap it
 
 </details>
 
+[Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
+
 ### 2. When is a queue a better data structure than a stack?
 
 <details>
@@ -23,6 +25,8 @@ An invariant describes what must hold before and after operations. For a heap it
 Use a queue when items should leave in insertion order, such as breadth-first traversal. Use a stack when the most recently added item should leave first, such as undo history.
 
 </details>
+
+[Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ Use it when correctness depends on real boundary behavior, such as transaction i
 
 </details>
 
+[Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
+
 ### 4. How can property-based tests expose errors an example misses?
 
 <details>
@@ -43,6 +49,8 @@ Use it when correctness depends on real boundary behavior, such as transaction i
 Generate diverse inputs and check an invariant, such as round-trip preservation. Shrinking can reduce a failure to a small case; useful properties and generators still need deliberate design.
 
 </details>
+
+[Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Profile representative inputs, vary their size, and identify the operation drivi
 
 </details>
 
+[Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
+
 ### 6. How do you split a risky refactor from a behavior change?
 
 <details>
@@ -63,6 +73,8 @@ Profile representative inputs, vary their size, and identify the operation drivi
 Capture important existing behavior in tests, migrate in small observable steps, and review behavior changes separately. Keep the old path available until evidence supports removing it.
 
 </details>
+
+[Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
 
 ## Official references
 

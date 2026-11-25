@@ -1,6 +1,6 @@
 # Node.js interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/nodejs) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/nodejs) · [Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ The event loop runs one JavaScript callback at a time, but the process can have 
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 2. Why can a zero-delay timer fire much later than scheduled?
 
 <details>
@@ -25,6 +27,8 @@ A timer delay is a threshold, not a deadline. The callback has to wait for the e
 **Explanation:** A zero delay expresses eligibility, not priority. Measure actual delay with a monotonic clock when diagnosing a stall. Do not assume the ordering of a zero-delay timer and setImmediate is identical in every scheduling context.
 
 </details>
+
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ### 3. Does putting a CPU-heavy loop in an async function make it non-blocking?
 
@@ -37,6 +41,8 @@ No. An async function runs its synchronous work on the calling thread. Await can
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 4. How do you make Node.js treat a file as an ES module or as CommonJS?
 
 <details>
@@ -48,6 +54,8 @@ Use .mjs for an ES module and .cjs for CommonJS. For .js files, set the nearest 
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 5. How do you tell whether a function throws synchronously or returns a rejected promise?
 
 <details>
@@ -58,6 +66,8 @@ A normal function can throw before it returns anything. An error thrown inside a
 **Explanation:** The relevant distinction is whether a promise was returned before the failure. In an async handler, placing both the call and await inside one try block covers synchronous throws and rejected promises without requiring separate catch paths.
 
 </details>
+
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ## Applied
 
@@ -72,6 +82,8 @@ Use a worker thread for CPU-intensive JavaScript when you want work to stay in t
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 7. You have 10,000 URLs to fetch. Why is mapping them all into Promise.all a poor default?
 
 <details>
@@ -83,6 +95,8 @@ The fetches begin as the map runs; Promise.all aggregates their results but does
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 8. What does it mean when a Writable stream returns false from write?
 
 <details>
@@ -93,6 +107,8 @@ The chunk was accepted, but the buffer has reached its backpressure threshold. P
 **Explanation:** The false result does not mean the chunk was rejected; writing it again duplicates data. Wait until the writable can accept more, while allowing the operation to fail if the stream errors or closes. Pipeline handles this for connected streams.
 
 </details>
+
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ### 9. Why isn't racing an HTTP request against a timeout enough to stop the request?
 
@@ -115,6 +131,8 @@ async function getJson(url) {
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 10. Can a Node.js server switch to a JSON error response after sending HTTP headers?
 
 <details>
@@ -126,6 +144,8 @@ No. Once the headers are sent, the status and headers cannot be replaced. Valida
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 11. Why might error logs refer to the wrong request in a busy Node.js service?
 
 <details>
@@ -136,6 +156,8 @@ A mutable global request ID is shared by concurrent callbacks. Pass context expl
 **Explanation:** A log written after await may run after a different request has updated a global ID. Initialize a fresh context at the request entry point. In tests, overlap at least two requests to expose problems that sequential runs hide.
 
 </details>
+
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ## Advanced scenarios
 
@@ -150,6 +172,8 @@ First measure event-loop delay and CPU together over the affected period. High d
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 13. RSS keeps growing, but V8 heap usage is flat. What do you investigate next?
 
 <details>
@@ -160,6 +184,8 @@ RSS includes more than the JavaScript heap. Look at process.memoryUsage values f
 **Explanation:** Break down RSS by heap, external memory and operating-system memory observations. ArrayBuffers are included in external memory; do not add both as independent totals. A growing native working set can need a different profiler than a JavaScript heap leak.
 
 </details>
+
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ### 14. Why can filesystem latency rise while event-loop delay remains low?
 
@@ -172,6 +198,8 @@ Many asynchronous filesystem operations use libuv's worker pool, which they shar
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 15. How would you shut down a Node.js HTTP service during a rolling deploy?
 
 <details>
@@ -182,6 +210,8 @@ On the shutdown signal, mark the instance unready, stop accepting new requests a
 **Explanation:** Readiness changes may take time to propagate. Design shutdown to tolerate a few late requests, handle upgraded connections separately, and ensure the application’s drain deadline fits inside the orchestrator’s termination grace period.
 
 </details>
+
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ### 16. A cache keyed by request parameters grows all day. How do you test whether it is retaining memory?
 
@@ -194,6 +224,8 @@ Track entry count and retained heap after comparable traffic and idle periods. I
 
 </details>
 
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
+
 ### 17. Why can several independent Node.js processes report different in-memory cache contents?
 
 <details>
@@ -204,6 +236,8 @@ Each process has its own address space. In-memory invalidation affects only the 
 **Explanation:** A worker that receives an invalidation cannot directly mutate another process’s map. Decide how stale a value may be, including after a subscriber restarts, and use expiration or reconciliation to recover from missed invalidation messages.
 
 </details>
+
+[Try the Node.js practice demo](https://www.mentaro.app/demo?topic=node-js&utm_source=github)
 
 ## Official references
 

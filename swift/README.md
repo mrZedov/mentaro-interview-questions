@@ -1,6 +1,6 @@
 # Swift interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ Use a struct when independent value semantics fit the data. Use a class when sha
 
 </details>
 
+[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
+
 ### 2. How does optional binding differ from force unwrapping in Swift?
 
 <details>
@@ -23,6 +25,8 @@ Use a struct when independent value semantics fit the data. Use a class when sha
 Optional binding handles the missing case and exposes a value only when it exists. Force unwrapping traps on nil and should only follow a separately enforced invariant.
 
 </details>
+
+[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ An escaping closure can capture an owner strongly while the owner retains the cl
 
 </details>
 
+[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
+
 ### 4. What is the benefit of implementing a protocol with associated types?
 
 <details>
@@ -43,6 +49,8 @@ An escaping closure can capture an owner strongly while the owner retains the cl
 It lets a conforming type specify related types while preserving relationships in generic code. Choose a generic API or a suitably constrained existential based on what the caller must know.
 
 </details>
+
+[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Actors can run other messages while an operation is suspended. An invariant chec
 
 </details>
 
+[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
+
 ### 6. How do you cancel a Swift task without leaving resources in an inconsistent state?
 
 <details>
@@ -63,6 +73,8 @@ Actors can run other messages while an operation is suspended. An invariant chec
 Cancellation is cooperative. Check cancellation at meaningful boundaries, use defer for cleanup, and ensure an interrupted operation can roll back or finish a small atomic step safely.
 
 </details>
+
+[Try the Swift practice demo](https://www.mentaro.app/demo?topic=swift&utm_source=github)
 
 ## Official references
 

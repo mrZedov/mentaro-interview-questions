@@ -1,6 +1,6 @@
 # PostgreSQL interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/postgresql) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/postgresql) · [Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ An update creates a new row version. Each reader sees the version visible to its
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 2. What does two SELECT statements seeing different data in one default transaction tell you?
 
 <details>
@@ -25,6 +27,8 @@ Under Read Committed, each statement gets its own snapshot. Another transaction 
 **Explanation:** Assume no writes by the first transaction itself and an ordinary read. Reproduce this in two sessions: A reads a balance, B updates and commits, then A repeats the read. If a computation requires both reads to use the same snapshot, choose an appropriate isolation level; if it enforces a cross-transaction rule, also reason about locks, constraints or retries.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ### 3. What is the difference between a primary key and a unique nullable column?
 
@@ -37,6 +41,8 @@ A primary key enforces both uniqueness and non-nullability. A unique constraint 
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 4. Does declaring a foreign key index the referencing column?
 
 <details>
@@ -48,6 +54,8 @@ Not automatically. Index the referencing columns when lookup or parent deletes a
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 5. What does WAL provide in crash recovery?
 
 <details>
@@ -58,6 +66,8 @@ PostgreSQL records changes before the data pages they describe need to reach dur
 **Explanation:** The data page need not be written on every commit: durable WAL can reconstruct changes after the latest usable checkpoint. WAL alone is not a backup of the whole database; point-in-time recovery also needs a base backup and the required WAL history.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ## Applied
 
@@ -72,6 +82,8 @@ It locks rows you intend to change until the transaction ends. It does not lock 
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 7. Why can a Serializable transaction still return an error?
 
 <details>
@@ -82,6 +94,8 @@ PostgreSQL can abort a transaction to prevent a non-serializable outcome. Retry 
 **Explanation:** Suppose two transactions both read that a second operator is on call, then each removes a different operator. The read/write dependency can make this unsafe despite no shared write row. Retry a serialization failure from the start, including all reads.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ### 8. What is the difference between estimated and actual rows in a query plan?
 
@@ -94,6 +108,8 @@ Estimated rows are planner predictions; actual rows are observed by EXPLAIN ANAL
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 9. Why does an index-only plan sometimes still fetch heap pages?
 
 <details>
@@ -104,6 +120,8 @@ The index may contain all requested values but not enough MVCC visibility inform
 **Explanation:** The visibility map describes whole heap pages. Frequent writes clear the all-visible indication, so a covering index may still need many heap fetches. Look at Heap Fetches in the actual plan instead of relying on the plan node name.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ### 10. When is SKIP LOCKED useful and what does it sacrifice?
 
@@ -116,6 +134,8 @@ Multiple workers can claim different available queue rows without waiting for on
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 11. When can a partial index be smaller and more useful than a full index?
 
 <details>
@@ -126,6 +146,8 @@ Index only the rows commonly queried, such as open jobs. The planner must be abl
 **Explanation:** A small index on pending orders can fit the queue query well while avoiding most completed rows. The query must imply the predicate when planned; check generic prepared plans, not just a query pasted with literal values.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ## Advanced scenarios
 
@@ -140,6 +162,8 @@ Its old snapshot can keep dead row versions potentially visible. Investigate lon
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 13. How do you diagnose a query that is waiting rather than using CPU?
 
 <details>
@@ -150,6 +174,8 @@ Inspect its wait event and blocking sessions before changing the query. A lock c
 **Explanation:** Start with the wait category and the timing: a lock wait calls for identifying the blocking transaction; I/O wait calls for looking at page reads and storage latency. Ending a blocker is an operational decision, not a query-tuning step.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ### 14. Why can a sequential scan be right after adding an index?
 
@@ -162,6 +188,8 @@ For a query reading a large fraction of a table, scanning it may be cheaper than
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 15. What should you test before adding an index concurrently on a busy table?
 
 <details>
@@ -172,6 +200,8 @@ Check the statement's transaction restrictions, expected disk and load headroom,
 **Explanation:** CREATE INDEX CONCURRENTLY avoids blocking normal writes throughout the build but still uses substantial resources and can wait for transactions. Check build progress and inspect for an invalid index if it aborts; it cannot run inside an explicit transaction block.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ### 16. Why might PostgreSQL benefit from extended statistics?
 
@@ -184,6 +214,8 @@ The planner can underestimate or overestimate predicates on correlated columns w
 
 </details>
 
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
+
 ### 17. Why can adding requests to a busy connection pool make p99 worse?
 
 <details>
@@ -194,6 +226,8 @@ More concurrent queries can increase lock waits, memory pressure and I/O content
 **Explanation:** Time spent waiting to obtain a connection and time spent executing SQL are separate. Increasing the pool can lower the first while raising the second through contention; evaluate both and the end-to-end tail under the same load.
 
 </details>
+
+[Try the PostgreSQL practice demo](https://www.mentaro.app/demo?topic=postgresql&utm_source=github)
 
 ## Official references
 

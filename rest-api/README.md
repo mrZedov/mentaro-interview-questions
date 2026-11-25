@@ -1,6 +1,6 @@
 # REST API interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/rest-api) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/rest-api) · [Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ A safe method does not ask the server to change resource state; incidental loggi
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 2. When would you use PUT rather than PATCH to update a resource?
 
 <details>
@@ -25,6 +27,8 @@ Use PUT when the client supplies the desired replacement state for a known resou
 **Explanation:** Name the operation’s contract explicitly. If a client omits a field from a replacement, define how omission behaves. For PATCH, specify the patch format and do not assume every patch operation is idempotent.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ### 3. How do 201 Created and 202 Accepted differ for an export request?
 
@@ -37,6 +41,8 @@ Use 201 if the request has created the resource; give the client its URI when ap
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 4. When is 401 a better response than 403?
 
 <details>
@@ -48,6 +54,8 @@ Use 401 when valid authentication credentials are missing or invalid; it carries
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 5. What belongs in a machine-readable validation error?
 
 <details>
@@ -58,6 +66,8 @@ Include a stable problem type, an appropriate HTTP status, and actionable detail
 **Explanation:** Expose a stable machine-readable error code and the location of an invalid field, so clients need not parse prose. Keep stack traces and sensitive values out of the response, while using diagnostics available to operators to investigate.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ## Applied
 
@@ -72,6 +82,8 @@ Use a client-provided idempotency key scoped to the caller and operation. Persis
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 7. How can an API prevent two editors from silently overwriting one another?
 
 <details>
@@ -82,6 +94,8 @@ Return a strong ETag with the representation. Require If-Match on writes and enf
 **Explanation:** Use the representation’s strong ETag in If-Match. Compare the version atomically with the update, not in a separate read. A 412 tells a stale editor to reload or merge rather than silently overwriting a newer edit.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ### 8. What does a 304 response save, and when should a server send it?
 
@@ -94,6 +108,8 @@ It saves retransmitting a representation the client already has. A conditional G
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 9. How do Cache-Control private and no-store differ?
 
 <details>
@@ -104,6 +120,8 @@ Private disallows storage by a shared cache but can permit storage in the user's
 **Explanation:** Private prevents a shared cache from storing the response but allows a private cache under its rules. Use no-store when compliant caches should not retain the response at all; neither directive replaces application access control.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ### 10. Why include a tie-breaker in cursor pagination?
 
@@ -116,6 +134,8 @@ If rows share a timestamp, a cursor containing only that timestamp cannot distin
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 11. Why include Vary: Accept-Language on a cacheable localized response?
 
 <details>
@@ -126,6 +146,8 @@ It tells a shared cache that the selected representation depends on the request 
 **Explanation:** If a French response is cached first for one URL, a later English request can receive the wrong variant unless the cache keys on the relevant header. Normalize locale choices or use explicit locale URLs if raw header variation creates too many cache entries.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ## Advanced scenarios
 
@@ -140,6 +162,8 @@ Respect Retry-After when supplied. Otherwise use bounded backoff with jitter and
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 13. What must an API verify before serving GET /projects/:id to a signed-in user?
 
 <details>
@@ -150,6 +174,8 @@ Verify that the current user can access that particular project, not just that t
 **Explanation:** Check both existence and the caller’s permission for this object or tenant. Include tests where one authenticated user asks for another user’s object; a successful login establishes identity, not access to every record.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ### 14. When can adding a response field still break old clients?
 
@@ -162,6 +188,8 @@ Clients may enforce an exact schema, generate brittle decoders or reinterpret a 
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 15. How do you model a slow export without keeping an HTTP request open?
 
 <details>
@@ -172,6 +200,8 @@ Accept the submission and expose a job resource with pending, complete and faile
 **Explanation:** Return a durable operation identifier and a status resource with terminal success and failure states. Define how callers retry job creation, how long results remain available, and what cancellation means once processing has begun.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ### 16. What should you measure when a list endpoint grows slow for larger tenants?
 
@@ -184,6 +214,8 @@ Break latency into authorization, database work, serialization and response size
 
 </details>
 
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+
 ### 17. What must a server check before resuming a download with a saved byte offset?
 
 <details>
@@ -194,6 +226,8 @@ Ensure the bytes belong to the same representation. A client can send If-Range w
 **Explanation:** Resume only against the same byte representation. With a matching strong validator, the server can return a partial response for a valid range. If it returns a full response because the validator changed, replace the local file rather than appending to it.
 
 </details>
+
+[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
 
 ## Official references
 

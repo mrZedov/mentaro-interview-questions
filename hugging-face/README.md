@@ -1,6 +1,6 @@
 # Hugging Face interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ A tokenizer converts input into model-compatible token IDs and back to text wher
 
 </details>
 
+[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
+
 ### 2. What should you read in a model card before selecting a checkpoint?
 
 <details>
@@ -23,6 +25,8 @@ A tokenizer converts input into model-compatible token IDs and back to text wher
 Check intended use, license, evaluation setup, training disclosures and limitations. A score on one benchmark does not establish fit for your workload or permission for redistribution.
 
 </details>
+
+[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ A branch can change weights, tokenizer or metadata without a deployment. Pin a r
 
 </details>
 
+[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
+
 ### 4. Why test a text-generation model with its intended chat template?
 
 <details>
@@ -43,6 +49,8 @@ A branch can change weights, tokenizer or metadata without a deployment. Pin a r
 The model may expect particular role markers and special tokens. A mismatched template can degrade responses even when the tokenizer and weights load successfully.
 
 </details>
+
+[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Measure token lengths, batch throughput and per-request latency. Compare dynamic
 
 </details>
 
+[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
+
 ### 6. What should an evaluation check before replacing a model with a quantized version?
 
 <details>
@@ -63,6 +73,8 @@ Measure token lengths, batch throughput and per-request latency. Compare dynamic
 Compare output quality on representative cases, including edge cases, as well as memory, latency and throughput. Quantization effects depend on the model, workload and hardware.
 
 </details>
+
+[Try the Hugging Face practice demo](https://www.mentaro.app/demo?topic=hugging-face&utm_source=github)
 
 ## Official references
 

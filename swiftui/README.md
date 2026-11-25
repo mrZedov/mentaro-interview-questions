@@ -1,6 +1,6 @@
 # SwiftUI interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the SwiftUI practice demo](https://www.mentaro.app/demo?topic=swiftui&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ SwiftUI reevaluates body when dependencies may have changed. Keep it a descripti
 
 </details>
 
+[Try the SwiftUI practice demo](https://www.mentaro.app/demo?topic=swiftui&utm_source=github)
+
 ### 2. What problem does a SwiftUI Binding solve?
 
 <details>
@@ -23,6 +25,8 @@ SwiftUI reevaluates body when dependencies may have changed. Keep it a descripti
 It provides access to a value owned elsewhere, allowing a child control to read and update that source of truth. It does not by itself create storage.
 
 </details>
+
+[Try the SwiftUI practice demo](https://www.mentaro.app/demo?topic=swiftui&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ State storage is associated with view identity. Changing row IDs can reset state
 
 </details>
 
+[Try the SwiftUI practice demo](https://www.mentaro.app/demo?topic=swiftui&utm_source=github)
+
 ### 4. When should a child view receive a plain value instead of a Binding?
 
 <details>
@@ -43,6 +49,8 @@ State storage is associated with view identity. Changing row IDs can reset state
 Use a plain value for read-only rendering. Grant write access only when the child edits the state directly; a discrete intent can often be represented more clearly by an action.
 
 </details>
+
+[Try the SwiftUI practice demo](https://www.mentaro.app/demo?topic=swiftui&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Key the task to the query so changes cancel old work. Ensure the underlying oper
 
 </details>
 
+[Try the SwiftUI practice demo](https://www.mentaro.app/demo?topic=swiftui&utm_source=github)
+
 ### 6. How do you stop navigation state from drifting after data is deleted?
 
 <details>
@@ -63,6 +73,8 @@ Key the task to the query so changes cancel old work. Ensure the underlying oper
 Use stable route identities and one owner for the navigation path. On data change, validate affected destinations and truncate or repair invalid paths predictably.
 
 </details>
+
+[Try the SwiftUI practice demo](https://www.mentaro.app/demo?topic=swiftui&utm_source=github)
 
 ## Official references
 

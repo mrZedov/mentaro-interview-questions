@@ -1,6 +1,6 @@
 # Google Cloud interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Google Cloud practice demo](https://www.mentaro.app/demo?topic=gcp&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ A service account identifies a workload. Assign only the permissions it needs an
 
 </details>
 
+[Try the Google Cloud practice demo](https://www.mentaro.app/demo?topic=gcp&utm_source=github)
+
 ### 2. What does a Google Cloud project provide as a boundary?
 
 <details>
@@ -23,6 +25,8 @@ A service account identifies a workload. Assign only the permissions it needs an
 It groups resources for access, service enablement, billing and quotas. Organization and folder policies can apply to it; resources in different projects may still communicate when explicitly configured.
 
 </details>
+
+[Try the Google Cloud practice demo](https://www.mentaro.app/demo?topic=gcp&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ Make the consumer idempotent using a stable event or business identifier, then a
 
 </details>
 
+[Try the Google Cloud practice demo](https://www.mentaro.app/demo?topic=gcp&utm_source=github)
+
 ### 4. How can a workload on Google Cloud avoid shipping a service-account key?
 
 <details>
@@ -43,6 +49,8 @@ Make the consumer idempotent using a stable event or business identifier, then a
 Attach the intended service account or use workload identity federation where appropriate. Use short-lived credentials provided by the environment, and keep permissions limited to what the workload needs.
 
 </details>
+
+[Try the Google Cloud practice demo](https://www.mentaro.app/demo?topic=gcp&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Scaling can increase the total connections across instances. Bound per-instance 
 
 </details>
 
+[Try the Google Cloud practice demo](https://www.mentaro.app/demo?topic=gcp&utm_source=github)
+
 ### 6. How would you diagnose a Cloud Run rollout that fails only on new instances?
 
 <details>
@@ -63,6 +73,8 @@ Scaling can increase the total connections across instances. Bound per-instance 
 Compare revision configuration, startup logs, identity and secret access. Separate startup failures from request-time failures, keep traffic on healthy revisions and confirm the corrected revision before increasing traffic.
 
 </details>
+
+[Try the Google Cloud practice demo](https://www.mentaro.app/demo?topic=gcp&utm_source=github)
 
 ## Official references
 

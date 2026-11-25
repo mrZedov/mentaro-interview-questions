@@ -1,6 +1,6 @@
 # Microservices interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/microservices) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/microservices) · [Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ Keep one deployable when boundaries are changing quickly, one team owns the syst
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 2. How can you tell whether two proposed services have the wrong boundary?
 
 <details>
@@ -23,6 +25,8 @@ Keep one deployable when boundaries are changing quickly, one team owns the syst
 Look for changes that routinely require modifying and deploying both, or rules that need an atomic write to both sets of data. Those are signs the boundary cuts across one business capability. Measure release coupling and call frequency before choosing where to move responsibility.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ### 3. Does database per service require a separate database server for every service?
 
@@ -33,6 +37,8 @@ The requirement is ownership: other services do not read or mutate the service's
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 4. What do you trade when replacing a synchronous call with a queue?
 
 <details>
@@ -42,6 +48,8 @@ A queue buffers work while the consumer is temporarily unavailable and lets prod
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 5. What should a service discovery mechanism tell a caller?
 
 <details>
@@ -50,6 +58,8 @@ A queue buffers work while the consumer is temporarily unavailable and lets prod
 It maps a logical service name to endpoints the caller can reach. Registration, health and DNS caching determine how fast the view changes. Discovery does not guarantee a request will succeed: endpoints can become unhealthy between lookup and use, so callers still need deadlines and failure handling.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ## Applied
 
@@ -62,6 +72,8 @@ Propagate a deadline or remaining time budget from the entry point. Reserve time
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 7. What is the difference between a circuit breaker and a bulkhead?
 
 <details>
@@ -70,6 +82,8 @@ Propagate a deadline or remaining time budget from the entry point. Reserve time
 A circuit breaker temporarily rejects calls to a failing dependency so it has a chance to recover. A bulkhead isolates resources such as concurrency slots so one dependency or tenant cannot consume them all. A failing dependency can require both faster rejection and resource isolation.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ### 8. Why can an event be delivered twice even with a transactional outbox?
 
@@ -80,6 +94,8 @@ The outbox makes the state change and publication intent atomic, not broker deli
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 9. What makes a saga compensation different from rolling back a database transaction?
 
 <details>
@@ -88,6 +104,8 @@ The outbox makes the state change and publication intent atomic, not broker deli
 Compensation is a new business action after already committed steps. It can fail or need a policy decision, and external effects such as a sent email cannot be undone. Persist the workflow state, retry safely and make unresolved cases visible to operators.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ### 10. How does a read projection handle messages delivered out of order?
 
@@ -98,6 +116,8 @@ Use a source version per entity when projecting full states, so an older message
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 11. What should a consumer-driven contract test verify that a health check cannot?
 
 <details>
@@ -106,6 +126,8 @@ Use a source version per entity when projecting full states, so an older message
 It verifies the response or event shapes and semantics a particular consumer relies on. A healthy process can still violate that contract. Keep the test focused on required behavior rather than every incidental field.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ## Advanced scenarios
 
@@ -118,6 +140,8 @@ If each initial request can make three attempts, a fully exhausted chain can pro
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 13. How do you find the cause of one slow request crossing five services?
 
 <details>
@@ -126,6 +150,8 @@ If each initial request can make three attempts, a fully exhausted chain can pro
 Propagate trace context and look at the request's critical path rather than summing all span durations. Compare slow and healthy traces, then use dependency latency and error metrics to check whether the example is representative. Include queue wait if the request crosses messaging.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ### 14. How do you replace an event field when consumers deploy independently?
 
@@ -136,6 +162,8 @@ Introduce the new field without removing the old one. Update consumers to accept
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 15. How do you know if a growing queue is a temporary burst or sustained overload?
 
 <details>
@@ -144,6 +172,8 @@ Introduce the new field without removing the old one. Update consumers to accept
 Compare arrival and successful processing rates, and track the age of the oldest unprocessed message. If consumers consistently process less than arrivals, adding buffer only delays the failure. Look for a throughput bottleneck, isolate poison messages and apply backpressure where needed.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ### 16. What evidence would justify rolling back a canary service release?
 
@@ -154,6 +184,8 @@ Define guardrails before the release: error rate, latency, resource saturation a
 
 </details>
 
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+
 ### 17. How do you test whether a critical service can run without an optional dependency?
 
 <details>
@@ -162,6 +194,8 @@ Define guardrails before the release: error rate, latency, resource saturation a
 Introduce timeouts or failures in a controlled environment and check that critical operations still meet their latency and correctness targets. Verify degraded responses, recovery and monitoring, not just that a fallback exists.
 
 </details>
+
+[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
 
 ## Official references
 

@@ -1,6 +1,6 @@
 # Laravel interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Laravel practice demo](https://www.mentaro.app/demo?topic=laravel&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ Middleware applies concerns around the request pipeline, such as authentication.
 
 </details>
 
+[Try the Laravel practice demo](https://www.mentaro.app/demo?topic=laravel&utm_source=github)
+
 ### 2. Why do Laravel route model binding and authorization solve different problems?
 
 <details>
@@ -23,6 +25,8 @@ Middleware applies concerns around the request pipeline, such as authentication.
 Binding resolves a route parameter to an object. Authorization decides whether the current caller may perform the action on it. A resolved record is not evidence of access.
 
 </details>
+
+[Try the Laravel practice demo](https://www.mentaro.app/demo?topic=laravel&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ Eager-load the relations the view or serializer needs explicitly, then inspect S
 
 </details>
 
+[Try the Laravel practice demo](https://www.mentaro.app/demo?topic=laravel&utm_source=github)
+
 ### 4. What changes when Laravel chunking updates the records being scanned?
 
 <details>
@@ -43,6 +49,8 @@ Eager-load the relations the view or serializer needs explicitly, then inspect S
 Offset-based chunks can skip or repeat rows if updates move records into or out of the result set. Iterate using a stable ordered key and define what to do with new rows during the run.
 
 </details>
+
+[Try the Laravel practice demo](https://www.mentaro.app/demo?topic=laravel&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Dispatch and database commit are separate. Use after-commit dispatch when the jo
 
 </details>
 
+[Try the Laravel practice demo](https://www.mentaro.app/demo?topic=laravel&utm_source=github)
+
 ### 6. How do you investigate job retries that cause inconsistent results?
 
 <details>
@@ -63,6 +73,8 @@ Dispatch and database commit are separate. Use after-commit dispatch when the jo
 Inspect whether the effect survives before the job is acknowledged. Use an operation ID or unique constraint to deduplicate, and make timeouts and retry intervals consistent with the worker visibility settings.
 
 </details>
+
+[Try the Laravel practice demo](https://www.mentaro.app/demo?topic=laravel&utm_source=github)
 
 ## Official references
 

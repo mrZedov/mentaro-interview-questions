@@ -1,6 +1,6 @@
 # Redis interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/redis) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/redis) · [Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ Use a sorted set when members need a score and range queries by rank or score. A
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 2. How does expiration differ from eviction?
 
 <details>
@@ -25,6 +27,8 @@ Expiration removes keys after their TTL. Eviction removes eligible keys under me
 **Explanation:** If an entry disappears before its TTL, check the eviction policy and counters. A cache can tolerate that condition; a system that treats the key as durable state cannot assume the TTL guarantees a minimum lifetime.
 
 </details>
+
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
 
 ### 3. Does a normal SET preserve an existing TTL?
 
@@ -49,6 +53,8 @@ If run immediately, the first TTL is close to 60 seconds; the last is -1 because
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 4. How does a hash differ from storing a JSON string under one key?
 
 <details>
@@ -60,6 +66,8 @@ A hash lets clients read and update named fields independently. A JSON string is
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 5. What does pipelining improve?
 
 <details>
@@ -70,6 +78,8 @@ It reduces network round trips by sending many commands without waiting after ea
 **Explanation:** Sending 100 independent commands one at a time pays up to 100 round trips. Batching them saves network waits, but each command still runs and returns separately. Bound batch size so buffering does not dominate memory.
 
 </details>
+
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
 
 ## Applied
 
@@ -84,6 +94,8 @@ It makes EXEC conditional on the watched keys remaining unchanged. If EXEC abort
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 7. What does a Streams consumer group track?
 
 <details>
@@ -94,6 +106,8 @@ It distributes deliveries among consumers and records pending entries until ackn
 **Explanation:** A delivered message can be pending under a dead consumer even when no new deliveries remain. Track pending age and reclaim abandoned work. If processing finished just before a crash, a second consumer may see the message again.
 
 </details>
+
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
 
 ### 8. How do RDB snapshots and AOF differ when recovering after a crash?
 
@@ -106,6 +120,8 @@ RDB captures point-in-time state; later changes can be lost. AOF replays recorde
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 9. Why can two Redis Cluster keys fail in one multi-key command?
 
 <details>
@@ -117,6 +133,8 @@ Many multi-key operations require all keys to be in the same hash slot. A shared
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 10. Why might removing a very large Redis key increase latency for other requests?
 
 <details>
@@ -127,6 +145,8 @@ Freeing a large value synchronously can take time on the command thread. Conside
 **Explanation:** UNLINK can remove the key from lookup before reclaiming its allocations in the background. It does not guarantee an instant drop in RSS. Confirm whether removal latency or memory recovery time is your actual constraint.
 
 </details>
+
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
 
 ## Advanced scenarios
 
@@ -141,6 +161,8 @@ A single popular key can overload the shard or network connection that serves it
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 12. Can asynchronously replicated Redis lose an acknowledged write after failover?
 
 <details>
@@ -151,6 +173,8 @@ Yes, the promoted replica may not have received the write. When the loss is unac
 **Explanation:** An immediate success response is not the same thing as a durable majority decision. After promotion, a client may find that its previous update is absent. Decide which state can be reconstructed and which must live in a store with stronger guarantees.
 
 </details>
+
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
 
 ### 13. What do you measure before increasing Redis maxmemory?
 
@@ -163,6 +187,8 @@ Separate evictions, object size, fragmentation, replica buffers and process RSS.
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 14. How should a service behave when its Redis cache is unavailable?
 
 <details>
@@ -174,6 +200,8 @@ If the authoritative store can serve the request, use bounded fallback and load 
 
 </details>
 
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
+
 ### 15. Why is INCR followed by EXPIRE not automatically a reliable counter with a lifetime?
 
 <details>
@@ -184,6 +212,8 @@ The increment may succeed and the process may fail before setting the expiry. Us
 **Explanation:** For a fixed window, set expiry when initializing the counter rather than sliding it on every increment. Make the update and expiry decision one operation, and decide separately how a retry after an uncertain response should be counted.
 
 </details>
+
+[Try the Redis practice demo](https://www.mentaro.app/demo?topic=redis&utm_source=github)
 
 ## Official references
 

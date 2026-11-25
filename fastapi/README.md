@@ -1,6 +1,6 @@
 # FastAPI interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the FastAPI practice demo](https://www.mentaro.app/demo?topic=fastapi&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ FastAPI runs normal def handlers in a thread pool. An async def handler runs on 
 
 </details>
 
+[Try the FastAPI practice demo](https://www.mentaro.app/demo?topic=fastapi&utm_source=github)
+
 ### 2. What does a FastAPI response model provide beyond a return annotation?
 
 <details>
@@ -23,6 +25,8 @@ FastAPI runs normal def handlers in a thread pool. An async def handler runs on 
 It can validate, serialize and filter output and describe the schema in OpenAPI. Define an explicit public schema instead of returning persistence objects with fields clients should not see.
 
 </details>
+
+[Try the FastAPI practice demo](https://www.mentaro.app/demo?topic=fastapi&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ Create the client in the application lifespan, make it available to handlers thr
 
 </details>
 
+[Try the FastAPI practice demo](https://www.mentaro.app/demo?topic=fastapi&utm_source=github)
+
 ### 4. How do you test a route that depends on an external client?
 
 <details>
@@ -43,6 +49,8 @@ Create the client in the application lifespan, make it available to handlers thr
 Override the dependency in the test app, exercise the HTTP route, and clear the override afterward. Keep real request validation in the test and include upstream failure cases.
 
 </details>
+
+[Try the FastAPI practice demo](https://www.mentaro.app/demo?topic=fastapi&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Use durable external work when jobs must survive process restarts, require retri
 
 </details>
 
+[Try the FastAPI practice demo](https://www.mentaro.app/demo?topic=fastapi&utm_source=github)
+
 ### 6. What can go wrong if every application worker opens a large database pool?
 
 <details>
@@ -63,6 +73,8 @@ Use durable external work when jobs must survive process restarts, require retri
 Pool sizes multiply across workers and replicas. Budget the total number of connections, set checkout timeouts and observe connection wait separately from database execution time.
 
 </details>
+
+[Try the FastAPI practice demo](https://www.mentaro.app/demo?topic=fastapi&utm_source=github)
 
 ## Official references
 

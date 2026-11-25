@@ -1,6 +1,6 @@
 # JavaScript interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/javascript) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/javascript) · [Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ## Foundations
 
@@ -24,6 +24,8 @@ console.log(settings.ui.zoom); // 2
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 2. When does an arrow function get its this value?
 
 <details>
@@ -46,6 +48,8 @@ console.log(counter.reader()());
 The result is 7.
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ### 3. What does a closure retain after its outer function returns?
 
@@ -72,6 +76,8 @@ The result is 1 2 1.
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 4. What is the difference between ?? and || for defaults?
 
 <details>
@@ -91,6 +97,8 @@ console.log(retries || 3); // 3
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 5. Why can two Date objects with the same timestamp fail strict equality?
 
 <details>
@@ -101,6 +109,8 @@ Object equality by === compares identity. Compare the numeric timestamps when th
 **Explanation:** Choose the comparison based on meaning: getTime compares instants, while comparing a calendar date requires a timezone or date-only representation. Invalid dates produce NaN from getTime, so validate before treating the result as a timestamp.
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ## Applied
 
@@ -114,6 +124,8 @@ An ordinary function's this depends on how it is called. Extracting obj.method a
 **Explanation:** The receiver comes from the call expression, not from where the function was declared. A wrapper can defer the property lookup to invocation time; bind fixes the function and receiver at binding time. This difference matters if a method can be replaced.
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ### 7. Does object spread make a deep copy?
 
@@ -133,6 +145,8 @@ console.log(before.preferences.zoom, after.preferences.zoom);
 ```
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ### 8. What does a browser run first after the current task: a queued microtask or a timer callback?
 
@@ -155,6 +169,8 @@ In a browser, the output is current, microtask, timer.
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 9. What happens if a callback passed to then throws?
 
 <details>
@@ -173,6 +189,8 @@ await Promise.resolve("data")
 ```
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ### 10. Does Array.forEach wait for an async callback to finish?
 
@@ -199,6 +217,8 @@ console.log(completed); // [1, 2]
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 11. Why can an array hole behave differently from an explicit undefined?
 
 <details>
@@ -219,6 +239,8 @@ The result is false true.
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 12. When does a WeakMap help associate metadata with objects?
 
 <details>
@@ -229,6 +251,8 @@ A WeakMap lets the metadata follow the lifetime of its object key without keepin
 **Explanation:** Useful metadata might be a memoized measurement for a DOM element. If the task instead requires listing all entries, deterministic eviction or bulk invalidation, use a different structure rather than treating garbage collection as a cache policy.
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ## Advanced scenarios
 
@@ -243,6 +267,8 @@ Track the latest request or generation and apply only its result. Abort prior re
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 14. How can an event listener cause a detached element to remain in memory?
 
 <details>
@@ -253,6 +279,8 @@ A listener attached to a long-lived object can close over the element. Dispose o
 **Explanation:** Removing a node is not enough if a callback registered on window keeps it reachable. An AbortController is one way to tie the subscription lifetime to a component; inspect a heap snapshot to see whether that listener is the actual retaining path.
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ### 15. Why is sorting state in place risky in a reactive application?
 
@@ -265,6 +293,8 @@ Array.sort mutates the original array, so code sharing the reference sees unexpe
 
 </details>
 
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
+
 ### 16. How would you keep a browser responsive while processing a large local dataset?
 
 <details>
@@ -275,6 +305,8 @@ Split work into tasks that yield to rendering, or move sustained computation to 
 **Explanation:** Start by measuring long tasks and identifying CPU versus parsing and rendering cost. A worker can isolate CPU work, but copying a large payload can itself take time; consider transferable buffers where ownership can move. For main-thread chunking, yield to a task rather than only to a microtask.
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ### 17. How do you parse an optional user-entered count without turning a blank into zero?
 
@@ -299,6 +331,8 @@ function optionalCount(text) {
 ```
 
 </details>
+
+[Try the JavaScript practice demo](https://www.mentaro.app/demo?topic=javascript&utm_source=github)
 
 ## Official references
 

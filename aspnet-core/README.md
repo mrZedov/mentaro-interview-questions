@@ -1,6 +1,6 @@
 # ASP.NET Core interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ Requests enter middleware in registration order, and responses unwind in reverse
 
 </details>
 
+[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
+
 ### 2. Which lifetimes does the ASP.NET Core service container offer?
 
 <details>
@@ -23,6 +25,8 @@ Requests enter middleware in registration order, and responses unwind in reverse
 Transient services are created on resolution, scoped services are shared within a scope, and singleton services are shared across the container. Avoid making a singleton retain a scoped service.
 
 </details>
+
+[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ Create and dispose a dependency injection scope per unit of work. Resolve the co
 
 </details>
 
+[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
+
 ### 4. How do you test authorization rules without deploying an ASP.NET Core application?
 
 <details>
@@ -43,6 +49,8 @@ Create and dispose a dependency injection scope per unit of work. Resolve the co
 Host the real application with WebApplicationFactory, replace authentication in the test host, and exercise endpoints over its test client. Include an authenticated user who lacks the required permission.
 
 </details>
+
+[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Blocking calls can occupy thread-pool threads while work queues. Check thread-po
 
 </details>
 
+[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
+
 ### 6. Why might an application generate HTTP callback URLs behind an HTTPS proxy?
 
 <details>
@@ -63,6 +73,8 @@ Blocking calls can occupy thread-pool threads while work queues. Check thread-po
 The app may see only its internal HTTP connection. Configure forwarded headers for known proxies, run that middleware before URL generation, and verify that untrusted clients cannot spoof the forwarded scheme.
 
 </details>
+
+[Try the ASP.NET Core practice demo](https://www.mentaro.app/demo?topic=aspnet-core&utm_source=github)
 
 ## Official references
 

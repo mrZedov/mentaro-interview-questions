@@ -1,6 +1,6 @@
 # Backend engineering interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
 
 ## Foundations
 
@@ -15,6 +15,8 @@ Validation checks whether input is acceptable. An invariant must remain true aft
 
 </details>
 
+[Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
+
 ### 2. What is the difference between a request timeout and an operation deadline?
 
 <details>
@@ -23,6 +25,8 @@ Validation checks whether input is acceptable. An invariant must remain true aft
 A timeout bounds a wait at one boundary. A deadline limits the end-to-end operation; propagate the remaining time so each retry and dependency does not start with a fresh full budget.
 
 </details>
+
+[Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
 
 ## Applied
 
@@ -35,6 +39,8 @@ Require an operation identifier, bind it to the request, and reuse the provider 
 
 </details>
 
+[Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
+
 ### 4. Where should you normalize a user-editable identifier?
 
 <details>
@@ -43,6 +49,8 @@ Require an operation identifier, bind it to the request, and reuse the provider 
 Choose one normalization rule and apply it before comparison and persistence. Enforce uniqueness over the normalized value; preserve the original spelling separately if users should see it.
 
 </details>
+
+[Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
 
 ## Advanced scenarios
 
@@ -55,6 +63,8 @@ Decide whether notification is part of the success contract. If it is not, persi
 
 </details>
 
+[Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
+
 ### 6. How do you roll out a mandatory database column without breaking old app instances?
 
 <details>
@@ -63,6 +73,8 @@ Decide whether notification is part of the success contract. If it is not, persi
 Add a compatible nullable column first, deploy writers, backfill in bounded batches, then validate and enforce the constraint after incompatible instances are gone. Plan rollback between phases.
 
 </details>
+
+[Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
 
 ## Official references
 

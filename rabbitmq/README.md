@@ -1,6 +1,6 @@
 # RabbitMQ interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/rabbitmq) · [Start interactive practice on Mentaro](https://www.mentaro.app/login?mode=signup&redirect=/onboarding)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/rabbitmq) · [Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ## Foundations
 
@@ -13,6 +13,8 @@ A publisher sends to an exchange. Bindings describe how it routes, and queues ho
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 2. How do direct, fanout and topic exchanges select destinations?
 
 <details>
@@ -21,6 +23,8 @@ A publisher sends to an exchange. Bindings describe how it routes, and queues ho
 Direct exchanges use an exact routing-key match, fanout exchanges ignore the key and route to bound queues, and topic exchanges match key segments against binding patterns.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ### 3. How does a publisher confirm differ from a consumer acknowledgement?
 
@@ -33,6 +37,8 @@ A confirm describes the broker's responsibility for the publish under the queue'
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 4. Does declaring a queue durable make every published message persistent?
 
 <details>
@@ -42,6 +48,8 @@ No. Queue durability concerns the queue definition; message delivery mode govern
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 5. What does prefetch control?
 
 <details>
@@ -50,6 +58,8 @@ No. Queue durability concerns the queue definition; message delivery mode govern
 It limits deliveries awaiting acknowledgement according to the configured scope. Set it with processing concurrency and memory in mind rather than using it as a delivery-rate limit.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ## Applied
 
@@ -62,6 +72,8 @@ The broker can requeue the unacknowledged message. The business operation might 
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 7. When should a consumer acknowledge after writing to a database?
 
 <details>
@@ -70,6 +82,8 @@ The broker can requeue the unacknowledged message. The business operation might 
 Acknowledge after the transaction commits. For duplicates, make the write idempotent or record the message ID in the same transaction so redelivery cannot repeat the effect.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ### 8. Can the broker confirm an unroutable publish?
 
@@ -80,6 +94,8 @@ Yes. A confirm alone is not evidence that a queue matched. When using the mandat
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 9. Why can immediate requeue of every failure hurt throughput?
 
 <details>
@@ -88,6 +104,8 @@ Yes. A confirm alone is not evidence that a queue matched. When using the mandat
 A failing message can be redelivered repeatedly without giving the dependency time to recover. Use capped retries with delay, then move exhausted work into a defined failure path.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ### 10. What does a dead-letter exchange do?
 
@@ -98,6 +116,8 @@ It receives messages dead-lettered by a queue under configured conditions, such 
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 11. Why would a RabbitMQ operator set a queue length limit?
 
 <details>
@@ -106,6 +126,8 @@ It receives messages dead-lettered by a queue under configured conditions, such 
 A limit bounds backlog and resource use, but the overflow behavior affects delivery guarantees. Decide whether to reject new publishes or discard queued work, and verify producer confirms and monitoring under load.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ## Advanced scenarios
 
@@ -118,6 +140,8 @@ Compare publish, delivery and acknowledgement rates and the counts of ready and 
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 13. Can you assume messages are processed in order with several consumers?
 
 <details>
@@ -126,6 +150,8 @@ Compare publish, delivery and acknowledgement rates and the counts of ready and 
 No. Delivery order and completion order differ, and redelivery can change effective order. If an entity requires ordered effects, coordinate its consumers and enforce sequencing in application state.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ### 14. What does a quorum queue trade for resilience?
 
@@ -136,6 +162,8 @@ It replicates queue state across members using a consensus protocol. It depends 
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 15. A publisher connection drops before a confirm arrives. What should the publisher assume?
 
 <details>
@@ -144,6 +172,8 @@ It replicates queue state across members using a consensus protocol. It depends 
 The outcome is unknown: the broker may have accepted the message. Retrying preserves delivery chances but can produce duplicates. Keep a stable message identifier and make consumers replay-safe.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ### 16. How do you drain a RabbitMQ consumer during rollout?
 
@@ -154,6 +184,8 @@ Stop accepting new deliveries, finish or safely abandon in-flight work, and ackn
 
 </details>
 
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
+
 ### 17. Why can aggressive consumer prefetch increase latency for some jobs?
 
 <details>
@@ -162,6 +194,8 @@ Stop accepting new deliveries, finish or safely abandon in-flight work, and ackn
 A consumer can hold many deliveries that other workers could otherwise process sooner. Tune prefetch against handler concurrency and processing-time variance, and observe ready versus unacknowledged messages.
 
 </details>
+
+[Try the RabbitMQ practice demo](https://www.mentaro.app/demo?topic=rabbitmq&utm_source=github)
 
 ## Official references
 
