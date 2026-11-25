@@ -11,6 +11,8 @@
 
 An interface can be connected while the server, DNS or authentication fails. Treat reachability as a hint and handle actual request outcomes with deadlines and clear offline states.
 
+**Explanation:** A device may have Wi-Fi but be trapped behind a captive portal, or the access token may have expired. Keep connectivity, request errors and authentication failures separate in the UI. If you offer retry for writes, account for uncertainty about whether the first write succeeded.
+
 </details>
 
 ### 2. What is the distinction between an offline cache and the local source of truth?

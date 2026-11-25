@@ -11,6 +11,8 @@
 
 A file descriptor is a process-local integer referring to an open kernel object. A filename is a directory entry used for lookup. An open descriptor can remain usable after that name is removed.
 
+**Explanation:** When a log file is renamed and replaced, a process that still holds the original descriptor can continue writing to the old file. A rotation procedure may need to make that process reopen the path; creating a file with the old name does not redirect existing descriptors.
+
 </details>
 
 ### 2. What is the difference between a process and a thread on Linux?

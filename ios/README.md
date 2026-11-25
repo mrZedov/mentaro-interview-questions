@@ -11,6 +11,8 @@
 
 The operating system can suspend or terminate the process without giving it an opportunity to save. Persist important changes when made and treat lifecycle transitions as additional checkpoints.
 
+**Explanation:** A draft that exists only in a view controller disappears if the app is suspended and later reclaimed. Persist durable input as it changes, perhaps with a short debounce, and reconstruct the screen from that saved state when launched again.
+
 </details>
 
 ### 2. How does Dynamic Type affect choices about iOS layout?

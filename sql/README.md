@@ -20,6 +20,17 @@ It emits one row for each matching pair. Three left rows and four right rows sha
 
 COUNT(*) counts result rows, including rows with null fields. COUNT(column) counts only non-null values, which is useful when counting matches after a left join.
 
+**Explanation:** A left join produces a placeholder row for a customer with no orders. Counting rows reports one for that customer; counting the non-nullable order key correctly reports zero. Keep the distinction when counting rows after any outer join.
+
+**Example:**
+
+```sql
+SELECT c.id, COUNT(*) AS joined_rows, COUNT(o.id) AS orders
+FROM customers AS c
+LEFT JOIN orders AS o ON o.customer_id = c.id
+GROUP BY c.id;
+```
+
 </details>
 
 ### 3. Why does column = NULL not find missing values?
@@ -37,6 +48,18 @@ Ordinary comparisons with NULL generally evaluate to unknown, and WHERE retains 
 <summary>Show answer</summary>
 
 WHERE filters input rows before grouping; HAVING filters the groups. Put a threshold on SUM(amount) in HAVING, but put the date range of rows to sum in WHERE.
+
+**Explanation:** Think in two stages: WHERE defines which rows contribute; HAVING decides whether a completed group qualifies. Moving the status test into HAVING is not equivalent to excluding unqualified rows from the sum.
+
+**Example:**
+
+```sql
+SELECT customer_id, SUM(amount) AS total
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer_id
+HAVING SUM(amount) >= 100;
+```
 
 </details>
 

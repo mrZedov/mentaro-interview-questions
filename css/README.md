@@ -11,6 +11,18 @@
 
 The cascade compares origin, importance and layers before specificity; scoping proximity and source order can break remaining ties. A more specific selector is not always the winner.
 
+**Explanation:** For normal author declarations, later declared layers outrank earlier layers, and unlayered rules outrank layered ones. The order is reversed for important declarations within layers. Inspect which layer wins before reaching for a stronger selector.
+
+**Example:**
+
+```css
+@layer defaults, theme;
+@layer defaults { #status { color: gray; } }
+@layer theme { .status { color: green; } }
+```
+
+An element with both id and class set to status is green despite the ID selector having higher specificity.
+
 </details>
 
 ### 2. What does box-sizing: border-box change?

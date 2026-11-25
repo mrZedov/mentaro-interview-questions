@@ -11,6 +11,8 @@
 
 It passes events or actions through relevant responders, such as views and view controllers, until one handles them. This separates routing from direct ownership of every handler.
 
+**Explanation:** A command such as Paste can be routed to the currently focused text responder rather than wiring every command directly to every input. For a business action with an explicit owner, a direct call or delegate may be clearer than relying on whichever responder currently handles the selector.
+
 </details>
 
 ### 2. How is a view controller different from a UIView in UIKit?

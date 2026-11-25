@@ -11,6 +11,8 @@
 
 PHP may coerce operand types with loose comparison. Parse the incoming string explicitly, validate the result and use strict comparison when type and value both matter.
 
+**Explanation:** A form field is often a string, even when the value looks numeric. Parse according to a business rule before comparing: a leading zero may be meaningful in an identifier but not in a quantity. Casting to an integer too early can discard that distinction.
+
 </details>
 
 ### 2. What does PHP strict_types change at a function boundary?

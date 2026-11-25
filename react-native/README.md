@@ -11,6 +11,8 @@
 
 React Native uses native platform views and APIs. Defaults, font metrics and platform capabilities can differ. Use shared behavior where practical and verify platform-specific layout and accessibility.
 
+**Explanation:** A fixed-height label that fits with one platform font can clip at another font size. Use a layout that can grow, test platform accessibility text settings, and adapt input or navigation behavior only where platform conventions differ.
+
 </details>
 
 ### 2. When should a React Native component have platform-specific implementations?

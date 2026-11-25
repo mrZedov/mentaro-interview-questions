@@ -11,6 +11,8 @@
 
 Use a struct when independent value semantics fit the data. Use a class when shared identity or lifecycle matters. A struct that contains a reference does not necessarily make that object independent.
 
+**Explanation:** A value like a screen filter should usually be independently editable after assignment. A coordinator shared by multiple views may instead need one identity and lifetime. If a struct contains a mutable class instance, copying the struct does not copy that referenced object.
+
 </details>
 
 ### 2. How does optional binding differ from force unwrapping in Swift?

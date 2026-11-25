@@ -38,6 +38,8 @@ Let controllers translate transport requests into calls and responses. Put reusa
 
 A guard decides whether execution may continue based on context, typically for access control. A pipe validates or transforms arguments before the handler receives them.
 
+**Explanation:** Guards run before the route pipes, so a guard cannot rely on a parameter having already been converted by a pipe. A common split is to check authentication or broad permissions in the guard, then enforce resource ownership in the application layer after validating the input.
+
 </details>
 
 ### 5. When would you use an exception filter instead of an interceptor?

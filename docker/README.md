@@ -76,6 +76,17 @@ Compile in a stage containing the toolchain, then copy only runtime artifacts in
 
 ENTRYPOINT specifies the executable and CMD can supply its default arguments. Arguments supplied when starting the container replace CMD by default without replacing the entrypoint.
 
+**Explanation:** Treat ENTRYPOINT as the command and CMD as its default arguments. Runtime arguments replace the defaults as a group rather than appending to them. Exec form also avoids inserting a shell in front of the executable.
+
+**Example:**
+
+```dockerfile
+ENTRYPOINT ["node", "cli.js"]
+CMD ["--help"]
+```
+
+For an image named cli, docker run cli --version runs node cli.js --version instead of node cli.js --help.
+
 </details>
 
 ### 9. When would you use a bind mount instead of a named volume?

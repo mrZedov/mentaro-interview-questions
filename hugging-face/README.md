@@ -11,6 +11,8 @@
 
 A tokenizer converts input into model-compatible token IDs and back to text where applicable. Weights define learned numerical parameters. Load a tokenizer compatible with the model and its expected input format.
 
+**Explanation:** The model sees integers, not the original words. A different tokenizer can assign the same integer to a different fragment and still produce inputs of valid shape. Pin the tokenizer and any chat template with the checkpoint to preserve that mapping.
+
 </details>
 
 ### 2. What should you read in a model card before selecting a checkpoint?

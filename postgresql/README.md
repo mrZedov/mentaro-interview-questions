@@ -20,6 +20,8 @@ An update creates a new row version. Each reader sees the version visible to its
 
 Under Read Committed, each statement gets its own snapshot. Another transaction can commit between the queries, so the second statement can see new data.
 
+**Explanation:** Assume no writes by the first transaction itself and an ordinary read. Reproduce this in two sessions: A reads a balance, B updates and commits, then A repeats the read. If a computation requires both reads to use the same snapshot, choose an appropriate isolation level; if it enforces a cross-transaction rule, also reason about locks, constraints or retries.
+
 </details>
 
 ### 3. What is the difference between a primary key and a unique nullable column?

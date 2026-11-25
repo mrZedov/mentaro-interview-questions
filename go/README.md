@@ -11,6 +11,28 @@
 
 An interface is nil only if both its dynamic type and value are absent. Assigning a typed nil pointer gives it a dynamic type. Return a literal nil when there is no error.
 
+**Explanation:** A nil pointer converted to error still carries its concrete type. A caller testing err != nil therefore enters the error path. The right repair is at the function returning the error, not a reflection-based nil check in every caller.
+
+**Example:**
+
+```go
+package main
+
+import "fmt"
+
+type failure struct{}
+
+func (*failure) Error() string { return "failed" }
+
+func main() {
+	var pointer *failure
+	var err error = pointer
+	fmt.Println(pointer == nil, err == nil)
+}
+```
+
+The program prints true false.
+
 </details>
 
 ### 2. How are a Go slice and array different when passed to a function?

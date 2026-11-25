@@ -11,6 +11,8 @@
 
 Keep one deployable when boundaries are changing quickly, one team owns the system and independent scaling is not needed. Enforce module boundaries in code. Split a module when there is a concrete benefit worth the cost of a network contract, extra infrastructure and independent failure modes.
 
+**Explanation:** For example, if account creation and profile setup change together and require one transaction, separating them immediately adds network and coordination failures without clear value. Give each module a boundary first; revisit extraction when independent release, scaling or fault isolation has measurable value.
+
 </details>
 
 ### 2. How can you tell whether two proposed services have the wrong boundary?

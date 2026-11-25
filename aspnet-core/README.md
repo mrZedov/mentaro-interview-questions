@@ -11,6 +11,8 @@
 
 Requests enter middleware in registration order, and responses unwind in reverse. Middleware may short-circuit the pipeline. Register authentication before authorization and test both successful and rejected requests.
 
+**Explanation:** Consider a protected endpoint whose authorization rule reads the current principal. Authentication must have had a chance to populate that principal. A short-circuiting component, such as middleware serving a static response, may skip everything registered after it.
+
 </details>
 
 ### 2. Which lifetimes does the ASP.NET Core service container offer?

@@ -11,6 +11,8 @@
 
 Validation checks whether input is acceptable. An invariant must remain true after concurrent updates and retries, so enforce it where authoritative state changes, such as with a transactional constraint.
 
+**Explanation:** Two signup requests can both pass a check that an email is unused. A unique constraint on the normalized email prevents both inserts from succeeding. Keep validation for helpful feedback, but handle the storage conflict because a preliminary read cannot serialize concurrent writers.
+
 </details>
 
 ### 2. What is the difference between a request timeout and an operation deadline?

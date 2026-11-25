@@ -11,6 +11,18 @@
 
 Two equal objects must have equal hash codes; unequal objects may collide. Do not mutate equality-relevant fields while an object is used as a hash-map key.
 
+**Explanation:** A hash-based collection first uses a hash to find candidate entries and then checks equality. Equal objects must therefore share a hash, but different objects can collide without being equal. Do not mutate fields used for identity while the object is stored as a key.
+
+**Example:**
+
+```java
+record UserId(long value) {}
+
+var users = new java.util.HashMap<UserId, String>();
+users.put(new UserId(7), "Ada");
+System.out.println(users.get(new UserId(7))); // Ada
+```
+
 </details>
 
 ### 2. When would ArrayList be preferable to LinkedList?

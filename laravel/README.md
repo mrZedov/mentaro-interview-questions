@@ -11,6 +11,8 @@
 
 Middleware applies concerns around the request pipeline, such as authentication. A controller translates a matched request into application work and a response. Keep core rules callable outside HTTP.
 
+**Explanation:** For example, a middleware can establish the caller for many routes, while a controller translates one create request into a use-case call. A business invariant such as whether an order may be cancelled belongs in reusable application or domain logic, not in middleware.
+
 </details>
 
 ### 2. Why do Laravel route model binding and authorization solve different problems?

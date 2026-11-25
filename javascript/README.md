@@ -11,6 +11,17 @@
 
 Const prevents reassignment of the variable binding, not mutation of the object. Object.freeze is a separate operation and is shallow unless nested objects are also frozen.
 
+**Explanation:** Separate the variable binding from the object it points to. Two bindings can still reference the same object, so mutating it through either binding is visible through both. Object.freeze only freezes the object passed to it; freezing a nested object graph is a separate decision.
+
+**Example:**
+
+```javascript
+const settings = Object.freeze({ ui: { zoom: 1 } });
+const alias = settings.ui;
+alias.zoom = 2;
+console.log(settings.ui.zoom); // 2
+```
+
 </details>
 
 ### 2. When does an arrow function get its this value?
@@ -37,6 +48,16 @@ It retains access to captured lexical bindings. It is not necessarily a snapshot
 <summary>Show answer</summary>
 
 The nullish operator falls back only for null and undefined. The logical OR operator also falls back for falsy values such as zero, false and the empty string.
+
+**Explanation:** Choose based on what counts as missing in the domain. Zero can mean a deliberate retry limit; converting it to a nonzero default changes behavior. Neither operator validates input: parse and check the range separately.
+
+**Example:**
+
+```javascript
+const retries = 0;
+console.log(retries ?? 3); // 0
+console.log(retries || 3); // 3
+```
 
 </details>
 
@@ -93,6 +114,22 @@ The promise returned by that then call rejects with the thrown error. Return or 
 <summary>Show answer</summary>
 
 No. Its iteration is synchronous and it discards callback return values. Await a for-of loop for sequential work or an explicitly bounded pool for parallel work.
+
+**Explanation:** The outer loop does not own the promises returned by its callbacks, so awaiting the loop does not wait for the work or propagate callback failures. A for-of loop awaits each item before starting the next; for independent work, use an explicit concurrency limit when the input is large.
+
+**Example:**
+
+```javascript
+const completed = [];
+async function save(id) {
+  await Promise.resolve();
+  completed.push(id);
+}
+for (const id of [1, 2]) {
+  await save(id);
+}
+console.log(completed); // [1, 2]
+```
 
 </details>
 

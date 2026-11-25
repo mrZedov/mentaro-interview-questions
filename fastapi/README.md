@@ -11,6 +11,8 @@
 
 FastAPI runs normal def handlers in a thread pool. An async def handler runs on the event loop and should await nonblocking I/O; calling a blocking library inside it can stall unrelated requests.
 
+**Explanation:** FastAPI chooses how to invoke the route handler, not every function it calls. A plain blocking helper called directly from async def still blocks that event loop. An async client fits an async handler; a synchronous client fits a sync path or an explicit bounded offload.
+
 </details>
 
 ### 2. What does a FastAPI response model provide beyond a return annotation?

@@ -11,6 +11,8 @@
 
 A safe method does not ask the server to change resource state; incidental logging is still allowed. An idempotent method has the same intended effect when the same request is repeated. DELETE is idempotent but not safe: repeating it can leave the resource absent even if the second response differs.
 
+**Explanation:** Safety is about the action requested, not whether the server logs the request or updates metrics. Idempotence is about effect, not identical responses: a repeated DELETE may return 404 after an initial success while still leaving the resource absent. Do not infer that an arbitrary POST is safe to retry after a lost response.
+
 </details>
 
 ### 2. When would you use PUT rather than PATCH to update a resource?

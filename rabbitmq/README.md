@@ -29,6 +29,8 @@ Direct exchanges use an exact routing-key match, fanout exchanges ignore the key
 
 A confirm describes the broker's responsibility for the publish under the queue's guarantees. A consumer acknowledgement tells the broker that a specific delivery can be removed. Neither proves both happened.
 
+**Explanation:** Trace the failure windows separately. A producer might lose the connection before it sees a confirm even though the broker accepted the publish. A consumer can finish the business write and disconnect before acknowledging. Both paths can produce duplicates, so deduplicate where the durable business effect occurs.
+
 </details>
 
 ### 4. Does declaring a queue durable make every published message persistent?

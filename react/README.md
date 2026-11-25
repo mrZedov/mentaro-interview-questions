@@ -20,6 +20,17 @@ Rendering calls components to compute UI. Committing applies the resulting chang
 
 Both use the same count from the current render snapshot and enqueue the same value. Use two functional updaters when each increment must build on the preceding pending state.
 
+**Explanation:** Each direct call reads the same count captured by the current render. Functional updaters run against the previous pending value rather than that captured snapshot. Keep updater functions pure; React may call them more than once in development to detect accidental side effects.
+
+**Example:**
+
+```javascript
+function incrementTwice(setCount) {
+  setCount(previous => previous + 1);
+  setCount(previous => previous + 1);
+}
+```
+
 </details>
 
 ### 3. What makes a useful key for a list of editable rows?

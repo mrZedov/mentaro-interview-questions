@@ -11,6 +11,8 @@
 
 SwiftUI reevaluates body when dependencies may have changed. Keep it a description of current UI, and place side effects in lifecycle or action mechanisms with clear cancellation behavior.
 
+**Explanation:** A state change unrelated to a network request can still cause body to be evaluated again. Fetching there risks duplicate requests. Tie asynchronous work to a view task or a user action, and account for a view being recreated or its task being cancelled.
+
 </details>
 
 ### 2. What problem does a SwiftUI Binding solve?

@@ -11,6 +11,8 @@
 
 Use a link for navigation to a destination and a button for an action. Native controls provide different keyboard behavior and semantics that styling alone does not reproduce.
 
+**Explanation:** Use an anchor with an href if users should be able to open the destination in a new tab or copy its address. Use a button to submit a form or open a dialog. Give a non-submit button inside a form type="button" to avoid unintended submission.
+
 </details>
 
 ### 2. Why give a form control a name even when it already has an ID?

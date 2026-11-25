@@ -11,6 +11,8 @@
 
 A service account identifies a workload. Assign only the permissions it needs and use short-lived credentials where possible instead of storing user credentials or long-lived keys.
 
+**Explanation:** For example, an export worker can run with an identity allowed to write to one bucket without acting as its operator. Separately control who may deploy or impersonate that identity and what actions the identity can take after deployment.
+
 </details>
 
 ### 2. What does a Google Cloud project provide as a boundary?

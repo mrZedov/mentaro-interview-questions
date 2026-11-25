@@ -29,6 +29,20 @@ Expiration removes keys after their TTL. Eviction removes eligible keys under me
 
 Replacing a value with SET normally clears its TTL unless you use an option such as KEEPTTL or set a new expiry. Include expiry in the write when it is a business requirement.
 
+**Explanation:** Treat expiry as part of the write contract. Refreshing a cache entry and updating it without extending its lifetime are different operations. A TTL of -1 means the key exists without expiry; -2 means it does not exist.
+
+**Example:**
+
+```text
+SET example value EX 60
+SET example replacement KEEPTTL
+TTL example
+SET example replacement
+TTL example
+```
+
+If run immediately, the first TTL is close to 60 seconds; the last is -1 because the ordinary SET removed the expiry.
+
 </details>
 
 ### 4. How does a hash differ from storing a JSON string under one key?

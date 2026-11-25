@@ -11,6 +11,8 @@
 
 A Region is a geographic area. An Availability Zone is an isolated infrastructure location within a Region. Deploying across zones mitigates a zone failure but does not provide regional disaster recovery.
 
+**Explanation:** Deploying application replicas in two zones does not help much if both depend on a database available in only one zone. Follow each dependency through the failure scenario. Regional recovery also needs data, traffic routing and a tested cutover, not just another copy of the compute service.
+
 </details>
 
 ### 2. What is the difference between an IAM role and a policy?

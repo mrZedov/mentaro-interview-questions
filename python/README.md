@@ -29,6 +29,21 @@ Is checks identity, as in value is None. Equality compares values according to t
 
 The default is evaluated once when the function is defined. Later calls without that argument reuse the object. Use a sentinel such as None and create a fresh list within the call.
 
+**Explanation:** The same list is reused only when the caller omits the argument. Creating the list inside the function avoids sharing between omitted calls, but mutating a list explicitly supplied by the caller is still observable. Copy it if your API promises not to mutate caller-owned data.
+
+**Example:**
+
+```python
+def add(value, items=None):
+    if items is None:
+        items = []
+    items.append(value)
+    return items
+
+assert add("a") == ["a"]
+assert add("b") == ["b"]
+```
+
 </details>
 
 ### 4. What makes a value eligible as a dictionary key?
@@ -75,6 +90,16 @@ It copies the outer mapping but retains references to the original values. Copy 
 <summary>Show answer</summary>
 
 It can yield one item at a time instead of retaining the whole file. Keep the file open for the duration of iteration, and avoid downstream operations such as list() that re-materialize all records.
+
+**Explanation:** Laziness only helps when the rest of the pipeline streams too: collecting the generator into a list recreates the memory problem. Open the file with a context manager and reduce the stream to the result you actually need.
+
+**Example:**
+
+```python
+def count_errors(path):
+    with open(path, encoding="utf-8") as lines:
+        return sum(1 for line in lines if line.startswith("ERROR "))
+```
 
 </details>
 

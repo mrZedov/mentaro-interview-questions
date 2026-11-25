@@ -11,6 +11,8 @@
 
 An invariant describes what must hold before and after operations. For a heap it constrains parent and child ordering; each update has to reestablish it before returning.
 
+**Explanation:** For a min-heap, every parent is no greater than its children. Appending an element can violate that rule only on the path to the root; moving it up repairs the affected path without sorting every element. The same invariant explains why the minimum is available at the root.
+
 </details>
 
 ### 2. When is a queue a better data structure than a stack?

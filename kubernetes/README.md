@@ -38,6 +38,8 @@ It gives clients a stable name and endpoint abstraction while selected Pods come
 
 Requests inform scheduling and resource allocation. Limits constrain use at runtime; CPU can be throttled while excessive memory use may lead to termination.
 
+**Explanation:** A CPU request is used for placement and influences CPU share under contention. A CPU limit can throttle the container even when its node has spare CPU. Memory is different: past the enforced memory limit, the container can be OOM-killed rather than throttled like CPU.
+
 </details>
 
 ### 5. When would you choose a StatefulSet over a Deployment?

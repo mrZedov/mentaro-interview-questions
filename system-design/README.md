@@ -20,6 +20,8 @@ Ask who uses the system, the main operations and their required availability and
 
 A daily average can hide bursts that overwhelm queues or connection pools. Estimate the busiest interval, read-to-write mix and request size, then check how sensitive the design is to each assumption.
 
+**Explanation:** One million requests a day averages about 12 per second. If 10% arrive within one minute, that minute averages about 1,667 requests per second. Then look inside that minute: short bursts matter for queue limits, while sustained bursts determine how long reduced capacity can last.
+
 </details>
 
 ### 3. How do a replication strategy and a partitioning strategy differ?

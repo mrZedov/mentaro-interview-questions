@@ -29,6 +29,22 @@ No. A collection validator can reject documents that do not meet required shapes
 
 Changes within the document apply atomically. Use a predicate that matches the expected current state if a concurrent modification should invalidate your update.
 
+**Explanation:** Readers cannot observe half of a single-document update. A guarded update can protect a rule on that document without an application-level read followed by a separate write. Inspect matchedCount to tell whether the guard succeeded; separate documents still need a separate consistency design.
+
+**Example:**
+
+```javascript
+async function reserveOne(inventory, itemId) {
+  const result = await inventory.updateOne(
+    { _id: itemId, available: { $gte: 1 } },
+    { $inc: { available: -1 } }
+  );
+  if (result.matchedCount === 0) throw new Error("Item unavailable");
+}
+```
+
+Pass a MongoDB driver Collection and the ID of an existing inventory item. With one unit left, at most one competing reservation matching that ID can decrement it.
+
 </details>
 
 ### 4. What happens if you index a field containing arrays?

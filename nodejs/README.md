@@ -11,6 +11,8 @@
 
 The event loop runs one JavaScript callback at a time, but the process can have many I/O operations outstanding. Network I/O is generally coordinated with the operating system; some work, such as asynchronous file operations, uses the libuv worker pool. When work is ready, its callback can run on the event-loop thread. A long JavaScript callback still delays other requests.
 
+**Explanation:** Concurrency does not mean that two handler callbacks execute JavaScript at once. If request A is waiting on a socket, request B can make progress while A is suspended. Conversely, an expensive synchronous parse blocks both the next handler and callbacks for I/O that has already finished.
+
 </details>
 
 ### 2. Why can a zero-delay timer fire much later than scheduled?
@@ -84,6 +86,18 @@ The chunk was accepted, but the buffer has reached its backpressure threshold. P
 <summary>Show answer</summary>
 
 Promise.race only settles the outer promise first. It does not stop the losing operation, which may keep using a connection or consuming a response. Pass an AbortSignal to an API that supports cancellation, such as fetch, and propagate it to downstream operations that should stop with the request.
+
+**Explanation:** The client-facing timeout and downstream cleanup are separate. Passing a signal lets fetch cancel the client operation, including response-body consumption, but cannot guarantee that the remote server stopped or reversed a write that it already began.
+
+**Example:**
+
+```javascript
+async function getJson(url) {
+  const response = await fetch(url, { signal: AbortSignal.timeout(500) });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.json();
+}
+```
 
 </details>
 

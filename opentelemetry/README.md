@@ -11,6 +11,8 @@
 
 A span represents one operation with timing, attributes and relationships. A trace groups related spans under a trace ID so the path through components can be inspected.
 
+**Explanation:** For a checkout trace, payment and inventory calls can be separate spans under one request. They may overlap, so adding their durations does not necessarily give request latency. Correlation depends on propagating trace context across service boundaries.
+
 </details>
 
 ### 2. What does context propagation provide across process boundaries?

@@ -11,6 +11,8 @@
 
 A point has an ID and one or more configured vectors, with optional payload metadata. The vector supports similarity search while payload fields support business filters or accompanying data.
 
+**Explanation:** For document search, a point might represent a chunk: a stable chunk ID, its embedding, and payload such as language or document ID. Filters apply to payload while similarity ranking uses the chosen vector. When re-embedding, track which model produced each searchable representation.
+
 </details>
 
 ### 2. Why choose a vector distance when creating a Qdrant collection?

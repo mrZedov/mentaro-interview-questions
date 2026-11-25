@@ -11,6 +11,8 @@
 
 Constructing or chaining it usually does not query the database. Evaluation operations such as iteration or conversion to a list do. Separate building the query from using its results.
 
+**Explanation:** Evaluation and caching are also distinct. Iterating an ordinary queryset fills its result cache; refining it returns another queryset. Use exists() if you only need to know whether a row matches, but calling exists() before iterating an unevaluated queryset can mean two queries.
+
 </details>
 
 ### 2. How does a Django model migration differ from model validation?

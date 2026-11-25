@@ -11,6 +11,20 @@
 
 Use unknown when callers can supply arbitrary input but the implementation must check it before using it. For example, an event decoder must verify that the input is a non-null object and validate the relevant fields. Any permits unchecked property access and can propagate an unchecked type to callers.
 
+**Explanation:** An external value and a validated application value are different contracts. Start with unknown at the boundary, check the property you need, and only then return the narrower type. A type assertion would silence the compiler but would not reject a malformed payload.
+
+**Example:**
+
+```typescript
+function readId(input: unknown): string {
+  if (typeof input !== "object" || input === null ||
+      !("id" in input) || typeof input.id !== "string") {
+    throw new TypeError("Expected a string id");
+  }
+  return input.id;
+}
+```
+
 </details>
 
 ### 2. What does it mean for TypeScript to use structural typing?
@@ -57,6 +71,25 @@ A mutable property may later be assigned a different string, so inference can wi
 <summary>Show answer</summary>
 
 Give each variant a shared discriminant with a different literal value. Switch on that discriminant and require the remaining value to be never in the fallback. If a new variant is not handled, it is still a possible value in the fallback and will not be assignable to never.
+
+**Explanation:** The check works because control-flow analysis removes each handled variant. After the final case, the remaining type should be never. Returning a generic fallback without that check would let the compiler accept a newly added variant silently.
+
+**Example:**
+
+```typescript
+type Result = { kind: "ok"; value: string } | { kind: "missing" };
+
+function describe(result: Result): string {
+  switch (result.kind) {
+    case "ok": return result.value;
+    case "missing": return "Not found";
+    default: {
+      const unhandled: never = result;
+      throw new Error(String(unhandled));
+    }
+  }
+}
+```
 
 </details>
 
