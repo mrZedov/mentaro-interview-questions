@@ -1,6 +1,6 @@
 # REST API interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/rest-api) · [Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/rest-api)
 
 ## Foundations
 
@@ -202,5 +202,3 @@ Ensure the bytes belong to the same representation. A client can send If-Range w
 - [IETF: Problem Details for HTTP APIs (RFC 9457)](https://www.rfc-editor.org/rfc/rfc9457.html)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-[Try the REST API practice demo](https://www.mentaro.app/demo?topic=rest-api&utm_source=github)

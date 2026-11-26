@@ -1,6 +1,6 @@
 # Microservices interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/microservices) · [Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/microservices)
 
 ## Foundations
 
@@ -170,5 +170,3 @@ Introduce timeouts or failures in a controlled environment and check that critic
 - [OpenTelemetry: Context propagation](https://opentelemetry.io/docs/concepts/context-propagation/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-[Try the Microservices practice demo](https://www.mentaro.app/demo?topic=microservices&utm_source=github)

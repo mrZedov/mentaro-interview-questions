@@ -1,6 +1,6 @@
 # Core software engineering interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions)
 
 ## Foundations
 
@@ -69,5 +69,3 @@ Capture important existing behavior in tests, migrate in small observable steps,
 - [Core software engineering documentation](https://docs.oracle.com/javase/specs/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-[Try the Core software engineering practice demo](https://www.mentaro.app/demo?topic=core-engineering&utm_source=github)

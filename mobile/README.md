@@ -1,6 +1,6 @@
 # Mobile engineering interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions)
 
 ## Foundations
 
@@ -69,5 +69,3 @@ Measure cold-start milestones by device class and release, then reproduce on rep
 - [Mobile engineering documentation](https://developer.android.com/topic/architecture)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-[Try the Mobile engineering practice demo](https://www.mentaro.app/demo?topic=mobile&utm_source=github)

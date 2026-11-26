@@ -1,6 +1,6 @@
 # System Design interview questions
 
-[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/system-design) · [Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)
+[Explore this topic on Mentaro](https://www.mentaro.app/interview-questions/system-design)
 
 ## Foundations
 
@@ -201,5 +201,3 @@ Keep the old version able to read transitional writes or separate the format rol
 - [Google SRE: Addressing cascading failures](https://sre.google/sre-book/addressing-cascading-failures/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-[Try the System Design practice demo](https://www.mentaro.app/demo?topic=system-design&utm_source=github)

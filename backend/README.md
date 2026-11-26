@@ -1,6 +1,6 @@
 # Backend engineering interview questions
 
-[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions) · [Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
+[Browse Mentaro’s web question catalog](https://www.mentaro.app/interview-questions)
 
 ## Foundations
 
@@ -69,5 +69,3 @@ Add a compatible nullable column first, deploy writers, backfill in bounded batc
 - [Backend engineering documentation](https://sre.google/books/)
 
 Original questions and answers by [Mentaro](https://www.mentaro.app/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-[Try the Backend engineering practice demo](https://www.mentaro.app/demo?topic=backend&utm_source=github)
